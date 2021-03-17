@@ -18,7 +18,7 @@ typora-copy-images-to: images
 
 
 
-#### 3/16 과제 
+#### 3/15 과제 
 
 - **Scanner의 next() 와 nextLine() 차이 확인**
   - next() : 공백을 기준으로 입력을 받는다. 즉, 띄어쓰기(=\\s)을 기준으로 입력을 받는다.
