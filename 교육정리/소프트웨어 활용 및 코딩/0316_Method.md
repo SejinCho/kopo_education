@@ -4,7 +4,7 @@ typora-copy-images-to: images
 
 
 
-#### 3/16 키워드 복습
+#### 3/15 키워드 복습
 
 - class 개념(눈에 보이는 사물들을 추상화시키기 위해 class를 설계)
 - class 만드는 이유
