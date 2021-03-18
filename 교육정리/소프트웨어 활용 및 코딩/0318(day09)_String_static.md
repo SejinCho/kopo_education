@@ -114,7 +114,7 @@ public class StringMain03 {
 		String str4 = "hello!!!!!!";
 		String sub = "hello";
 		boolean bool4 = str4.startsWith(sub);
-		if(bool) {
+		if(bool4) {
 			System.out.println("[" + str4 + "]은 [" + sub + "]로 시작합니다.");
 		}else {
 			System.out.println("[" + str4 + "]은 [" + sub + "]로 시작하지 않습니다.");
@@ -124,7 +124,7 @@ public class StringMain03 {
 		System.out.println("\n****문자열이 특정 문자열로 끝나는지 확인(endsWith)****");
 		String str5 = "hello.txt";
 		boolean bool5 = str5.endsWith(".txt");
-		if(bool) {
+		if(bool5) {
 			System.out.println("[" + str5 + "]은 텍스트 파일입니다.");
 		}else {
 			System.out.println("[" + str5 + "]은 텍스트 파일이 아닙니다.");
@@ -201,23 +201,23 @@ public class StringMain03 {
 		System.out.println("\n\n****문자열 탐색(index)****");
 		String str8 = "hello world";
 		
-		int searchIdx = str.indexOf("o");
+		int searchIdx = str8.indexOf("o");
 		System.out.println("o의 indexOf() : " + searchIdx);
 		
-		searchIdx = str.indexOf("p");
+		searchIdx = str8.indexOf("p");
 		System.out.println("p의 indexOf() : " + searchIdx);
 		
-		searchIdx = str.lastIndexOf("o");
+		searchIdx = str8.lastIndexOf("o");
 		System.out.println("o의 lastOf() : " + searchIdx);
 		
-		searchIdx = str.indexOf("o",5);
+		searchIdx = str8.indexOf("o",5);
 		System.out.println("index('o',5) : " + searchIdx);
 		
 		
 		System.out.println("\n< " + str8 +"에서 l의 위치 출력 > ");
 		System.out.println("첫 번째 방법");
 		char ch = 'l' ;
-		searchIdx = str.indexOf(ch);
+		searchIdx = str8.indexOf(ch);
 		while(searchIdx != -1) {
 			System.out.println("검색된 위치 : " + searchIdx);
 			searchIdx = str8.indexOf(ch,searchIdx+1);
@@ -233,7 +233,7 @@ public class StringMain03 {
 }
 ```
 
-![image-20210318111636341](images/image-20210318111636341.png)
+![image-20210319003444152](images/image-20210319003444152.png)
 
 
 
