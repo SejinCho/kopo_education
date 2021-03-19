@@ -279,7 +279,7 @@ public class StringMain04 {
 		System.out.println("\n****replace****");
 		System.out.println("replace() 전 : " + str);
 		str = str.replace("ll", "rrrrrr") ;
-		System.out.println("replace() 후 : " + str);
+		System.out.println("replace() 후 : " + str); //들어간 문자나 문자열이 모두 바뀐다.
 		
 		//***trim()***
 		System.out.println("\n****trim****");
