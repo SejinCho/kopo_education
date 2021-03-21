@@ -208,7 +208,7 @@ byte < short < int < long < float < double < char < int <long < float < double
 
 - 변경될 수 없는 고정된 데이터
 
-- 코드의 이해와 변겨잉 쉬움
+- 코드의 이해와 변경이 쉬움
 
 - 분산된 상수로 인한 에러를 방지
 
@@ -243,9 +243,6 @@ public class ConstMain {
 		System.out.println(BOOL);
 
 	}
-
- 
-
 }
 ```
 
