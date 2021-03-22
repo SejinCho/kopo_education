@@ -178,7 +178,9 @@ typora-copy-images-to: images
 
 - **자료형의 크기 비교**
 
-byte < short < int < long < float < double < char < int <long < float < double
+byte < short < int < long < float < double
+
+​             char < int <long < float < double
 
 
 
