@@ -192,6 +192,8 @@ public class GenericMain {
 		A a01 = new A(new String("Hello"));
 		A a02 = new A(new Random());
 		a01.info(); //toString이 찍힘
+		//원래는 주소값이 찍히는데 String toString을 override해서 
+		//값이 나올 수 있도록 한 것이다.
 		a02.info();
 		
 		//System.out.println("길이 : " + a01.getObj().length());
