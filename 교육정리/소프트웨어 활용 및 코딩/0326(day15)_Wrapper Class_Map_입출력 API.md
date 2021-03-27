@@ -349,6 +349,8 @@ public class MapMain02 {
 }
 ```
 
+- Object의 equals는 값이 같다고 하더라도 주소값이 다르면 다르다는 결과가 나오지만 String인 경우는 주소값이 달라도 값이 같으면 같다고 나온다. 왜냐하면!! Stirng 같은 경우는 Object의 equals 메서드를 오버라이드해서 재정의했기 때문이다.
+
 
 
 - **해쉬코드와 equals 주소값이 아닌 값으로 같게 설정하는 법**
