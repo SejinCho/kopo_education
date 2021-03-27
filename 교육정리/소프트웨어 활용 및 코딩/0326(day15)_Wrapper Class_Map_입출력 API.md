@@ -499,7 +499,7 @@ public class MapMain02 {
   		System.out.println("입력을 하세요. ctrl +z를 누르면 종료합니다.");
   		InputStream is = System.in;
   		InputStreamReader isr = new InputStreamReader(is);
-  		String s = isr.read();
+  		int s = isr.read();
   	}
   }
   ```
