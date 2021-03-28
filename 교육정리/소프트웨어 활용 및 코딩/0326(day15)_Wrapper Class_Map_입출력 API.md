@@ -1050,7 +1050,7 @@ public class MapMain02 {
 
    ![image-20210326153336419](images/image-20210326153336419.png)
 
-  - 출력 (**********실해안됨 다시 확인!!!!!!!*********)
+  - **출력**
 
   ```java
   package kr.ac.kopo.day15;
@@ -1074,7 +1074,7 @@ public class MapMain02 {
   		DataOutputStream dos = null;
   		
   		try {
-  			fos = new FileOutputStream("ioData/testFile.dat");
+  			fos = new FileOutputStream("iodata/test.dat");
   			dos = new DataOutputStream(fos);
   			
   			dos.writeChar(c); //char가 2바이트이니까 
@@ -1083,13 +1083,13 @@ public class MapMain02 {
   			dos.writeInt(i);
   			dos.writeDouble(d);
   			
+  			System.out.println("쓰기완료...");
   		} catch (Exception e) {
   			e.printStackTrace();
   		}finally {
   			FileClose.close(fos);
   			FileClose.close(dos);
   		}
-  		System.out.println("쓰기 완료");
   		
   	}
   	
@@ -1104,6 +1104,11 @@ public class MapMain02 {
   			char c = dis.readChar();
   			int i = dis.readInt();
   			double d = dis.readDouble();
+  			
+  			System.out.println("읽어온 데이터 출력");
+  			System.out.println("문자 : " + c);
+  			System.out.println("정수 : " + i);
+  			System.out.println("실수 : " + d);
   		}catch (Exception e) {
   			e.printStackTrace();
   		}finally {
@@ -1111,20 +1116,19 @@ public class MapMain02 {
   		}
   	}
   	public static void main(String[] args) {
-  		//read(); //읽어오기 
-  		write();
-  		
-  		
+  		read(); //읽어오기 
+  		//write();
+			
   	}
-  }
+}
   ```
 
   
 
   - **예**
-
+  
   ###### <kr.ac.kopo.day15.Dog>
-
+  
   ```java
   package kr.ac.kopo.day15;
   
@@ -1167,13 +1171,13 @@ public class MapMain02 {
   		return "Dog [name=" + name + ", age=" + age + ", kind=" + kind + "]";
   	}
   	
-  	
+	
   }
-  
+
   ```
-
+  
   ###### <kr.ac.kopo.day15.FileIOMain05>
-
+  
   ```java
   package kr.ac.kopo.day15;
   
@@ -1236,11 +1240,11 @@ public class MapMain02 {
   	
   	public static void main(String[] args) {
   		write();
-  		read();
+		read();
   	}
   }
   ```
-
+  
   - 만약 강아지가 2마리인 경우는? 생각해보기
     - Dog d = new Dog("앙꼬",4, "푸들");
     - Dog d2 = new Dog("콩이",2, "푸들");
