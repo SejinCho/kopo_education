@@ -22,7 +22,7 @@ typora-copy-images-to: images
 
 - **Web Serve의 장점**
   - Static resource 처리를 빨리 해주고,
-  - WAS 서버의 주소 노출이 안되어 보안이 강화되고 (port 번호를 숨길 수 있음)
+  - WAS 서버의 주소 노출이 안되어 보안이 강화 (port 번호를 숨길 수 있음)
   - 여러 개의 WAS의 업무 분배해 주어 자원을 효율적으로 활용
 
 
