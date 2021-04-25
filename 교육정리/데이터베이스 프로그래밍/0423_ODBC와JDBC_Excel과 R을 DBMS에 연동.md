@@ -208,6 +208,32 @@ typora-copy-images-to: images
 
 ## R & Oracle 연동
 
+
+
+- R 설치
+
+  https://cran.r-project.org/mirrors.html
+
+  ![image-20210425201545542](images/image-20210425201545542.png)
+
+  ![image-20210425201652958](images/image-20210425201652958.png)
+
+  ![image-20210425201720307](images/image-20210425201720307.png)
+
+  ![image-20210425201746105](images/image-20210425201746105.png)
+
+  
+
+- R Studio 설치
+
+  ![image-20210425202458084](images/image-20210425202458084.png)
+
+  ![image-20210425202529098](images/image-20210425202529098.png)
+
+  
+
+
+
 ```R
 
 install.packages("rJava")
@@ -341,6 +367,8 @@ dbGetQuery(conn, query)
   - tnsnames.ora 파일 추가
   
   ![image-20210423184057395](images/image-20210423184057395.png)
+  
+  ![image-20210425213014906](images/image-20210425213014906.png)
 
 
 
