@@ -191,6 +191,7 @@ typora-copy-images-to: images
 
 
 ## Rvalue / Lvalue
+  - 형변환 시 Rvalue를 변환하면 성능이 저하가 된다. 그래서 Lvalue를 변형한다.
 
 ![image-20210423125644168](images/image-20210423125644168.png)
 
