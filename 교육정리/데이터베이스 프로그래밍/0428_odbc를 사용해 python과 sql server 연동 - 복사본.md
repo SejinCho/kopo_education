@@ -115,8 +115,6 @@ group by d.DNAME;
 
 ![image-20210428182936345](images/image-20210428182936345.png)
 
-![image-20210428182954229](images/image-20210428182954229.png)
-
 
 
 - 아나콘다 설치
