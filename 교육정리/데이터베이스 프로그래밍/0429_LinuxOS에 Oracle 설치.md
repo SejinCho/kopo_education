@@ -514,7 +514,100 @@ $ unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip
 
   ![image-20210429200139903](images/image-20210429200139903.png)
 
-  - **Use following for the database storage attributes 선택**
+  
+
+  - - **Use following for the database storage attributes 선택**
+
+    ![image-20210430103929369](images/image-20210430103929369.png)
+
+    - next 선택
+
+    ![image-20210430104035924](images/image-20210430104035924.png)
+
+    - 리스너 선택
+
+    ![image-20210430104111015](images/image-20210430104111015.png)
+
+    - **모두 체크 해제**
+
+    ![image-20210430104155602](images/image-20210430104155602.png)
+
+    - **Memory 에서 AMM 사이즈는 1024MB 선택**
+
+    ![image-20210430104233594](images/image-20210430104233594.png)
+
+    - **Choose from the list of character sets 는 KO16MSWIN949 선택**
+
+    ![image-20210430104352977](images/image-20210430104352977.png)
+
+    - **Connection mode 는 Dedicated server mode 선택**
+
+    ![image-20210430104431339](images/image-20210430104431339.png)
+
+    - **Sample schemas 는 선택 안함**
+
+    ![image-20210430104459337](images/image-20210430104459337.png)
+
+    - **EM 체크 해제**
+
+    ![image-20210430104525533](images/image-20210430104525533.png)
+
+    - **sys 계정 패스워드 설정**
+      - passwd : oracle
+
+    ![image-20210430104643473](images/image-20210430104643473.png)
+
+    - Create database 선택
+
+    ![image-20210430104827587](images/image-20210430104827587.png)
+
+    - **Finish 선택**
+
+    ![image-20210430104851282](images/image-20210430104851282.png)
+
+    - db instance 생성 중
+
+    ![image-20210430104909041](images/image-20210430104909041.png)
+
+    - **db 인스턴스 생성 완료**
+
+    ![image-20210430110621745](images/image-20210430110621745.png)
+
+    - **db 접속 후 버전 및 상태 확인**
+
+      - 리눅스에서
+
+      ```
+      $ sqlplus / as sysdba
+      SQL> select instance_name, version, status from v$instance;
+      ```
+
+    ![image-20210430111030036](images/image-20210430111030036.png)
+
+    
+
+  - db를 사용할 수 있는 계정을 생성
+
+    - user name : linux_scott / passwd : 1234
+    - 그리고 계정에 권한주기 (모든 권한주기)
+
+    ```
+    SQL> CREATE USER linux_scott IDENTIFIED BY 1234;
+    
+    SQL> GRANT CONNECT, DBA, RESOURCE TO linux_scott;
+    ```
+
+    ![image-20210430111504119](images/image-20210430111504119.png)
+
+  
+
+  - SQL Developer에 접속
+
+    ![image-20210430112017554](images/image-20210430112017554.png)
+
+  
+
+  
 
   
 
