@@ -4,315 +4,439 @@ typora-copy-images-to: images
 
 
 
-## LinuxOS에 Oracle 12g R2or 19cR2 설치 및 구성
+## Oracle Linux 8.1에 Oracle 19c 설치
 
 
 
-- Oracle Linux 8.1 (64bit) 설치 
+- ### Oracle Linux 8.1 (64bit) 설치 
 
-  -  https://yum.oracle.com/oracle-linux-isos.html
+  -  https://yum.oracle.com/oracle-linux-isos.html **에서 다운로드 받음**
 
   ![image-20210429162455264](images/image-20210429162455264.png)
 
-  ​	![image-20210429163050587](images/image-20210429163050587.png)
+  
+
+  - **VMware Workstation 에서 New Virtual Machine 선택**
+
+  ![image-20210429163050587](images/image-20210429163050587.png)
+
+  - **I will install the operating system later. 선택**
 
   ![image-20210429163310973](images/image-20210429163310973.png)
 
+  - **Linux - Oracle Linux 8 64-bit 선택**
+
   ![image-20210429163330175](images/image-20210429163330175.png)
+
+  - **Virtual machine 이름 설정**
 
   ![image-20210429163514723](images/image-20210429163514723.png)
 
+  - **50, Store virtual disk as a single file 선택**
+
   ![image-20210429163629381](images/image-20210429163629381.png)
+
+  - **Finish**
 
   ![image-20210429163656060](images/image-20210429163656060.png)
 
+  - **Settings 클릭**
+
   ![image-20210429163843435](images/image-20210429163843435.png)
+
+  - **Memory > 4096MB 선택**
 
   ![image-20210429163800506](images/image-20210429163800506.png)
 
+  -  **USB, Printer, 사운드 삭제**
+
   ![image-20210429163957727](images/image-20210429163957727.png)
+
+  - **CD/DVD 에서 Browse 선택**
 
   ![image-20210429164108172](images/image-20210429164108172.png)
 
+  - **Oracle linux 8.1 설치 미디어 삽입**
+
   ![image-20210429164048340](images/image-20210429164048340.png)
+
+  - **전원 ON**
 
   ![image-20210429164140193](images/image-20210429164140193.png)
 
+  - **Install Oracle Linux 8.1.0 선택**
+
   ![image-20210429164207650](images/image-20210429164207650.png)
+
+  - **한국어 선택**
 
   ![image-20210429164540641](images/image-20210429164540641.png)
 
+  - **시간 및 날짜 선택**
+
   ![image-20210429164635727](images/image-20210429164635727.png)
+
+  - **아시아 - 서울 선택 후 완료**
 
   ![image-20210429164705804](images/image-20210429164705804.png)
 
+  - **소프트웨어 선택**
+
   ![image-20210429164747971](images/image-20210429164747971.png)
+
+  - **서버 - GUI 사용 - 레거시 UNIX 호환성, 개발용 툴 선택 후 완료**
 
   ![image-20210429164829043](images/image-20210429164829043.png)
 
+  - **설치 대상 선택 **
+
   ![image-20210429165002738](images/image-20210429165002738.png)
+
+  - **Custom 선택 후 완료**
 
   ![image-20210429165055948](images/image-20210429165055948.png)
 
+  - **수동으로 파티션 설정, + 버튼 **
+
   ![image-20210429165200998](images/image-20210429165200998.png)
+
+  - **/boot 500MB 마운트 지점 추가**
 
   ![image-20210429165226766](images/image-20210429165226766.png)
 
+  - **수동으로 파티션 설정, + 버튼 - swap 4096MB 마운트 지점 추가**
+
   ![image-20210429165312087](images/image-20210429165312087.png)
 
+  - **수동으로 파티션 설정, + 버튼 - / 용량설정X 마운트 지점 추가(자동으로 나머지 모두 할당)**
+  
   ![image-20210429165339127](images/image-20210429165339127.png)
-
+  
+  - **수동으로 파티션 설정, 설정된 파티션 확인 후 완료** 
+  
   ![image-20210429165411841](images/image-20210429165411841.png)
-
+  
+  - **변경 사항 적용 선택**
+  
   ![image-20210429165439693](images/image-20210429165439693.png)
-
+  
+  - **KDUMP **
+  
   ![image-20210429165506795](images/image-20210429165506795.png)
-
+  
+  - **kdump 활성화 체크 해제 후 완료**
+  
   ![image-20210429165520445](images/image-20210429165520445.png)
-
+  
+  - **네트워크 & 호스트 이름**
+  
   ![image-20210429165538808](images/image-20210429165538808.png)
-
+  
+  - **Host Name 설정 후 적용 - 설정**
+  
   ![image-20210429165628233](images/image-20210429165628233.png)
-
+  
+  - **일반, Connect automatically with priority 체크**
+  
   ![image-20210429165717342](images/image-20210429165717342.png)
-
+  
+  - **IPv4 설정. 주소 192.168.137.50/24/192.168.137.2/168.126.63.1 설정**
+  
   ![image-20210429170003985](images/image-20210429170003985.png)
-
+  
+  - **IPv6 설정, 무시**
+  
   ![image-20210429170039856](images/image-20210429170039856.png)
-
+  
+  - **켬 선택 후 완료**
+  
   ![image-20210429170100584](images/image-20210429170100584.png)
-
+  
+  - **보안 정책**
+  
   ![image-20210429170114356](images/image-20210429170114356.png)
-
+  
+  - **끔 선택 후 완료**
+  
   ![image-20210429170128748](images/image-20210429170128748.png)
-
+  
+  - **Root 암호 선택**
+  
   ![image-20210429170402934](images/image-20210429170402934.png)
-
+  
+  - **ROOT 암호, root 2번 입력 후 완료 2번 선택**
+    - 암호 root
+  
   ![image-20210429170325987](images/image-20210429170325987.png)
-
+  
+  - **설치 시작**
+  
   ![image-20210429170501623](images/image-20210429170501623.png)
-
+  
+  - **설치 중**
+  
   ![image-20210429171135801](images/image-20210429171135801.png)
-
+  
+  - **시스템 재시작 선택**
+  
   ![image-20210429173717510](images/image-20210429173717510.png)
-
   
-
+  - **사용자 생성 선택**
+  
   ![image-20210429173956894](images/image-20210429173956894.png)
-
-  ![image-20210429174045805](images/image-20210429174045805.png)
-
-  ![image-20210429174142014](images/image-20210429174142014.png)
-
-  ![image-20210429174204617](images/image-20210429174204617.png)
-
-  ![image-20210429174235656](images/image-20210429174235656.png)
-
   
-
-
+  - **admin/admin 입력 후 완료 2번 선택**
+  
+  ![image-20210429174045805](images/image-20210429174045805.png)
+  
+  - License Information
+  
+  ![image-20210429174142014](images/image-20210429174142014.png)
+  
+  - 약관 동의 후 완료
+  
+  ![image-20210429174204617](images/image-20210429174204617.png)
+  
+  - 설정완료 선택
+  
+  ![image-20210429174235656](images/image-20210429174235656.png)
+  
+  
 
 
 
 ## 환경설정
 
+- **oracle linux로 들어간 후 /etc/hosts 설정**
 
+  ```shell
+  vi /etc/hosts
+  ```
 
-- **/etc/hosts 설정**
+  ![image-20210429175241415](images/image-20210429175241415.png)
 
-![image-20210429175241415](images/image-20210429175241415.png)
+  
 
 - **/etc/hostname 확인**
 
-![image-20210429175324380](images/image-20210429175324380.png)
+  ```shell
+  vi /etc/
+  ```
+
+  ![image-20210429175324380](images/image-20210429175324380.png)
 
 
 
-- 오라클 설치 전 사전 설정
+- **오라클 설치 전 사전 설정**
+
+  ```shell
+  yum -y install oracle-database-preinstall-19c
+  ```
 
 ![image-20210429184142203](images/image-20210429184142203.png)
 
 
 
-- rpm 설치용 쉘파일 생성
+- **rpm 설치용 쉘파일 생성**
 
-```
-# vi rpm.sh
-dnf install -y bc    
-dnf install -y binutils
-#dnf install -y compat-libcap1
-dnf install -y compat-libstdc++-33
-#dnf install -y dtrace-modules
-#dnf install -y dtrace-modules-headers
-#dnf install -y dtrace-modules-provider-headers
-#dnf install -y dtrace-utils
-dnf install -y elfutils-libelf
-dnf install -y elfutils-libelf-devel
-dnf install -y fontconfig-devel
-dnf install -y glibc
-dnf install -y glibc-devel
-dnf install -y ksh
-dnf install -y libaio
-dnf install -y libaio-devel
-#dnf install -y libdtrace-ctf-devel
-dnf install -y libXrender
-dnf install -y libXrender-devel
-dnf install -y libX11
-dnf install -y libXau
-dnf install -y libXi
-dnf install -y libXtst
-dnf install -y libgcc
-dnf install -y librdmacm-devel
-dnf install -y libstdc++
-dnf install -y libstdc++-devel
-dnf install -y libxcb
-dnf install -y make
-dnf install -y net-tools # Clusterware
-dnf install -y nfs-utils # ACFS
-dnf install -y python # ACFS
-dnf install -y python-configshell # ACFS
-dnf install -y python-rtslib # ACFS
-dnf install -y python-six # ACFS
-dnf install -y targetcli # ACFS
-dnf install -y smartmontools
-dnf install -y sysstat
-dnf install -y unixODBC
- 
-# New for OL8
-dnf install -y libnsl
-dnf install -y libnsl.i686
-dnf install -y libnsl2
-dnf install -y libnsl2.i686
-```
+  ```shell
+  # vi rpm.sh
+  dnf install -y bc    
+  dnf install -y binutils
+  #dnf install -y compat-libcap1
+  dnf install -y compat-libstdc++-33
+  #dnf install -y dtrace-modules
+  #dnf install -y dtrace-modules-headers
+  #dnf install -y dtrace-modules-provider-headers
+  #dnf install -y dtrace-utils
+  dnf install -y elfutils-libelf
+  dnf install -y elfutils-libelf-devel
+  dnf install -y fontconfig-devel
+  dnf install -y glibc
+  dnf install -y glibc-devel
+  dnf install -y ksh
+  dnf install -y libaio
+  dnf install -y libaio-devel
+  #dnf install -y libdtrace-ctf-devel
+  dnf install -y libXrender
+  dnf install -y libXrender-devel
+  dnf install -y libX11
+  dnf install -y libXau
+  dnf install -y libXi
+  dnf install -y libXtst
+  dnf install -y libgcc
+  dnf install -y librdmacm-devel
+  dnf install -y libstdc++
+  dnf install -y libstdc++-devel
+  dnf install -y libxcb
+  dnf install -y make
+  dnf install -y net-tools # Clusterware
+  dnf install -y nfs-utils # ACFS
+  dnf install -y python # ACFS
+  dnf install -y python-configshell # ACFS
+  dnf install -y python-rtslib # ACFS
+  dnf install -y python-six # ACFS
+  dnf install -y targetcli # ACFS
+  dnf install -y smartmontools
+  dnf install -y sysstat
+  dnf install -y unixODBC
+   
+  # New for OL8
+  dnf install -y libnsl
+  dnf install -y libnsl.i686
+  dnf install -y libnsl2
+  dnf install -y libnsl2.i686
+  ```
 
 ![image-20210429184844503](images/image-20210429184844503.png)
 
 
 
-- 쉘 실행
+- **쉘 실행**
 
+  ```shell
   sh rpm.sh
-
-
-
-- 유저 및 그룹 생성
-
-```
-groupadd -g 54321 oinstall
-groupadd -g 54322 dba
-groupadd -g 54323 oper 
-useradd -u 54321 -g oinstall -G dba,oper oracle
-
-```
-
-
-
-- selinux disable 설정
-  - vi /etc/selinux/config
-
-![image-20210429185416280](images/image-20210429185416280.png)
-
-
-
-- 방화벽 해제
-
   ```
+  
+  
+
+- **유저 및 그룹 생성**
+
+  ```shell
+  groupadd -g 54321 oinstall
+  groupadd -g 54322 dba
+  groupadd -g 54323 oper 
+  useradd -u 54321 -g oinstall -G dba,oper oracle
+  ```
+
+  
+
+- **selinux disable 설정**
+
+  ```shell
+  vi /etc/selinux/config
+  ```
+
+  ![image-20210429185416280](images/image-20210429185416280.png)
+
+
+
+- **방화벽 해제**
+
+  ```shell
   systemctl stop firewalld
   systemctl disable firewalld
-  
   ```
 
 ![image-20210429185553709](images/image-20210429185553709.png)
 
 
 
-- 설치 경로 생성
+- **설치 경로 생성**
 
-```
-mkdir -p /ORA19/app/oracle/product/19.0.0/db_1/
-mkdir -p /ORA19/app/oradata
-chown -R oracle:oinstall /ORA19
-chmod -R 775 /ORA19
-```
+  ```shell
+  mkdir -p /ORA19/app/oracle/product/19.0.0/db_1/
+  mkdir -p /ORA19/app/oradata
+  chown -R oracle:oinstall /ORA19
+  chmod -R 775 /ORA19
+  ```
 
-
+  
 
 - **서버에 Oracle Database 설치 미디어 업로드 후 권한 부여**
 
-  - window에서 설치 후 리눅스로 파일 옮기기
+  - **window에서 설치 후 리눅스로 파일 옮기기**
 
   ![image-20210429191632521](images/image-20210429191632521.png)
 
-  - option > shared folders > add
+  
+
+  - **option > shared folders > add**
 
   ![image-20210429191732159](images/image-20210429191732159.png)
 
-  - next
+  
+
+  - **next**
 
   ![image-20210429191807386](images/image-20210429191807386.png)
 
-  - 폴더 위치 
+  
+
+  - **옮길 파일이 있는 window 폴더 위치** 
 
   ![image-20210429191843568](images/image-20210429191843568.png)
 
-  - finish
+  
+
+  - **finish**
 
   ![image-20210429191902885](images/image-20210429191902885.png)
 
-  - 폴더 위치
+  
+
+  - **window에서 linux로 옮긴 폴더 위치**
 
   ![image-20210429191932048](images/image-20210429191932048.png)
-
-  - zip 파일을 아까 생성한 /ORA19/app/oracle/product/19.0.0/db_1/ 폴더로 옮기기
-
+  
+  
+  
+  - **zip 파일을 아까 생성한 /ORA19/app/oracle/product/19.0.0/db_1/ 폴더로 옮기기**
+  
+    ```shell
     mv LINUX.X64_193000_db_home.zip  /ORA19/app/oracle/product/19.0.0/db_1/
-
+    ```
+  
     ![image-20210429192429779](images/image-20210429192429779.png)
+  
+    
+  
+  - **서버에 Oracle Database 설치 미디어 업로드 후 권한 부여**
+  
+    ```
+    chown oracle:oinstall LINUX.X64_193000_db_home.zip
+    ```
 
-  - 서버에 Oracle Database 설치 미디어 업로드 후 권한 부여
 
+
+-  **.bash_profile 에 아래 내용 추가**
+
+  ```shell
+  su - oracle
+  vi .bash_profile
   ```
-  chown oracle:oinstall LINUX.X64_193000_db_home.zip
+
+  ```shell
+  export TMP=/tmp
+  export TMPDIR=$TMP
+   
+  export ORACLE_HOSTNAME=oel8
+  export ORACLE_UNQNAME=oracle19
+  export ORACLE_BASE=/ORA19/app/oracle
+  export ORACLE_HOME=$ORACLE_BASE/product/19.0.0/db_1
+  export ORA_INVENTORY=/ORA19/oraInventory
+  export ORACLE_SID=oracle19
+  export DATA_DIR=/ORA19/app/oradata
+  export PATH=/usr/sbin:/usr/local/bin:$PATH
+  export PATH=$ORACLE_HOME/bin:$PATH
+  export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
+  export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
+   
+  export DISPLAY=192.168.119.111:0.0
   ```
 
 
-
-- 오라클 계정 접속 후 **.bash_profile 에 아래 내용 추가**
-
-```
-# su - oracle
-$ vi .bash_profile
-```
-
-```
-export TMP=/tmp
-export TMPDIR=$TMP
- 
-export ORACLE_HOSTNAME=oel8
-export ORACLE_UNQNAME=oracle19
-export ORACLE_BASE=/ORA19/app/oracle
-export ORACLE_HOME=$ORACLE_BASE/product/19.0.0/db_1
-export ORA_INVENTORY=/ORA19/oraInventory
-export ORACLE_SID=oracle19
-export DATA_DIR=/ORA19/app/oradata
-export PATH=/usr/sbin:/usr/local/bin:$PATH
-export PATH=$ORACLE_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib
-export CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
- 
-export DISPLAY=192.168.119.111:0.0
-```
 
 ![image-20210429192855808](images/image-20210429192855808.png)
 
 
 
-- 오라클 설치 파일 압축 해제
+- **오라클 설치 파일 압축 해제**	
 
-```
-$ cd $ORACLE_HOME
-$ unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip 
-```
+  ```shell
+  cd $ORACLE_HOME
+  unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip 
+  ```
 
 ![image-20210429193145071](images/image-20210429193145071.png)
 
@@ -322,9 +446,7 @@ $ unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip
 
 ## Oracle Software 설치
 
-
-
-- profile 로 들어가서 주석처리
+- **oracle linux로 들어가서 profile 로 들어가서 주석처리**
 
   ![image-20210429193410201](images/image-20210429193410201.png)
 
@@ -332,13 +454,13 @@ $ unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip
 
 
 
-- 환경변수 적용 완료
+- **환경변수 적용 완료**
 
 ![image-20210429193556928](images/image-20210429193556928.png)
 
 
 
-- 윈도우에서 xming 다운로드 - gui 환경설정
+- **윈도우에서 xming 다운로드 - gui 환경설정**
 
   https://sourceforge.net/projects/xming/
 
@@ -370,9 +492,9 @@ $ unzip Oracle\ Database\ 19.3.0.0.0\ for\ Linux\ x86-64\(V982063-01\).zip
 
   
 
-- putty 접속 후 오라클 설치
+- **putty 접속 후 오라클 설치**
 
-  - 오라클 설치
+  - **오라클 설치**
 
   ![image-20210429194226182](images/image-20210429194226182.png)
 
