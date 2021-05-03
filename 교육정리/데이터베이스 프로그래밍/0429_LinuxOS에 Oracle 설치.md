@@ -582,6 +582,8 @@ typora-copy-images-to: images
 
   ![image-20210429193925341](images/image-20210429193925341.png)
 
+  - XLaunch
+
   ![image-20210429194002193](images/image-20210429194002193.png)
 
   ![image-20210429194032934](images/image-20210429194032934.png)
@@ -598,87 +600,113 @@ typora-copy-images-to: images
 
 - **putty 접속 후 오라클 설치**
 
-  - **오라클 설치**
+  - **SSH - X11**
 
   ![image-20210429194226182](images/image-20210429194226182.png)
 
+  - **Session 설정**
+
   ![image-20210429194346263](images/image-20210429194346263.png)
 
-  ![image-20210429194434234](images/image-20210429194434234.png)
-
-  - 비밀번호 : oracle
+  - **oracle 리눅스에 있는 oracle 계정으로 login**
+  
+![image-20210429194434234](images/image-20210429194434234.png)
+  
+- **비밀번호 : oracle**
     - export LANG=c : 한글 깨짐 방지
 
   ![image-20210429194513184](images/image-20210429194513184.png)
 
-  - 오라클 설치
+  
+
+  - **오라클 설치**
 
   ![image-20210429194605114](images/image-20210429194605114.png)
 
-  - 에러 발생
+  
 
+  - **에러 발생**
+  
   ![image-20210429194715857](images/image-20210429194715857.png)
-
-  - 에러 조치 방법
-
-    - **CV_ASSUME_DISTID 값을 설정**
-
+  
+- **에러 조치 방법**
+  
+  - **CV_ASSUME_DISTID 값을 설정**
+  
     ```
-    $ export CV_ASSUME_DISTID=RHEL7.6
+  $ export CV_ASSUME_DISTID=RHEL7.6
     $ ./runInstaller
-    ```
-
-    ![image-20210429194920626](images/image-20210429194920626.png)
-
-    - 에러 원인 : **OS 호환성 문제**
+  ```
+  
+  ![image-20210429194920626](images/image-20210429194920626.png)
+  
+  - 에러 원인 : **OS 호환성 문제**
       - **oracle 19c docs 를 보니 oracle linux 8은 아직 지원하지 않는다고 나옴**
 
   - **Set Up Software Only 선택**
 
   ![image-20210429195030398](images/image-20210429195030398.png)
 
+  
+
   - **Single instance database installation 선택**
 
   ![image-20210429195059452](images/image-20210429195059452.png)
+
+  
 
   - **Enterprise Edition 선택**
 
   ![image-20210429195122104](images/image-20210429195122104.png)
 
-  - **Oracle base 경로 설정**
+  
+  
+- **Oracle base 경로 설정**
+  
+![image-20210429195143797](images/image-20210429195143797.png)
+  
 
-  ![image-20210429195143797](images/image-20210429195143797.png)
+  
+- **Inventory 경로 선택**
+  
+![image-20210429195206955](images/image-20210429195206955.png)
+  
 
-  - **oraInventory 경로 선택**
-
-  ![image-20210429195206955](images/image-20210429195206955.png)
-
-  - **그룹 권한 선택**
-
+  
+- **그룹 권한 선택**
+  
   ![image-20210429195233653](images/image-20210429195233653.png)
-
+  
+  
+  
   - **./runinstaller 실행후 자동으로 root 스크립트 실행을 위한 root 패스워드 입력****(root.sh 등)**
     - passwd : root
-
+  
   ![image-20210429195256773](images/image-20210429195256773.png)
-
-  - install
-
+  
+  
+  
+  - **install**
+  
   ![image-20210429195338448](images/image-20210429195338448.png)
-
+  
+  
+  
   - **root 스크립트를 돌리기 전 확인차 물어보는 메세지 Yes 선택**
-
+  
   ![image-20210429195419770](images/image-20210429195419770.png)
-
-  - db 소프트웨어(엔진) 설치 완료 Close 선택
-
+  
+  
+  
+  - **db 소프트웨어(엔진) 설치 완료 Close 선택**
+  
   ![image-20210429195449423](images/image-20210429195449423.png)
 
 
 
-- 리스너 설정
+- #### 리스너 설정
 
-  netca
+  - **오라클 리눅스에서 netca 입력**
 
   ![image-20210429195545466](images/image-20210429195545466.png)
 
@@ -694,7 +722,7 @@ typora-copy-images-to: images
 
   ![image-20210429195653961](images/image-20210429195653961.png)
 
-  - 프로토콜 설정
+  - **프로토콜 설정**
 
   ![image-20210429195714290](images/image-20210429195714290.png)
 
@@ -702,15 +730,15 @@ typora-copy-images-to: images
 
   ![image-20210429195732544](images/image-20210429195732544.png)
 
-  - no
+  - **no**
 
   ![image-20210429195749368](images/image-20210429195749368.png)
 
-  - next
+  - **next**
 
   ![image-20210429195803118](images/image-20210429195803118.png)
 
-  - finish
+  - **finish**
 
   ![image-20210429195815799](images/image-20210429195815799.png)
 
@@ -736,7 +764,7 @@ typora-copy-images-to: images
 
   ![image-20210429200056940](images/image-20210429200056940.png)
 
-  - oracle SID 입력
+  - **oracle SID 입력**
 
   ![image-20210429200139903](images/image-20210429200139903.png)
 
@@ -746,11 +774,11 @@ typora-copy-images-to: images
 
     ![image-20210430103929369](images/image-20210430103929369.png)
 
-    - next 선택
+    - **next 선택**
 
     ![image-20210430104035924](images/image-20210430104035924.png)
 
-    - 리스너 선택
+    - **리스너 선택**
 
     ![image-20210430104111015](images/image-20210430104111015.png)
 
@@ -783,7 +811,7 @@ typora-copy-images-to: images
 
     ![image-20210430104643473](images/image-20210430104643473.png)
 
-    - Create database 선택
+    - **Create database 선택**
 
     ![image-20210430104827587](images/image-20210430104827587.png)
 

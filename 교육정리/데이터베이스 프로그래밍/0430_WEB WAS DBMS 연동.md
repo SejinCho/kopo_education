@@ -132,7 +132,7 @@ typora-copy-images-to: images
 
   ![image-20210430181121610](images/image-20210430181121610.png)
 
-  - new - class
+  - **new - class**
 
   ![image-20210430181136982](images/image-20210430181136982.png)
 
@@ -140,11 +140,11 @@ typora-copy-images-to: images
 
   ![image-20210430181942148](images/image-20210430181942148.png)
 
-  - emp table의 column 넣기
+  - **emp table의 column 넣기**
 
   ![image-20210430181916841](images/image-20210430181916841.png)
 
-  - web.xml 설정
+  - **web.xml 설정**
     - display-name에 프로젝트 명을 작성
     - 위의 dbconn calss에 서블릿 매핑을 dbconn으로 설정되어 있어서 servlet-name을 dbconn으로 설정
 
@@ -172,7 +172,7 @@ typora-copy-images-to: images
   </web-app>
   ```
 
-  - dbconn class에 db와 연결하는 코드 작성
+  - **dbconn class에 db와 연결하는 코드 작성**
 
   ![image-20210430182452029](images/image-20210430182452029.png)
 
