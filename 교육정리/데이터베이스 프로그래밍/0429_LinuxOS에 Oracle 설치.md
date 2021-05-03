@@ -140,7 +140,7 @@ typora-copy-images-to: images
   
   ![image-20210429165717342](images/image-20210429165717342.png)
   
-  - **IPv4 설정. 주소 192.168.137.50/24/192.168.137.2/168.126.63.1 설정**
+  - **IPv4 설정. 주소 192.168.119.111 설정**
   
   ![image-20210429170003985](images/image-20210429170003985.png)
   
@@ -189,15 +189,15 @@ typora-copy-images-to: images
   
   ![image-20210429174045805](images/image-20210429174045805.png)
   
-  - License Information
+  - **License Information**
   
   ![image-20210429174142014](images/image-20210429174142014.png)
   
-  - 약관 동의 후 완료
+  - **약관 동의 후 완료**
   
   ![image-20210429174204617](images/image-20210429174204617.png)
   
-  - 설정완료 선택
+  - **설정완료 선택**
   
   ![image-20210429174235656](images/image-20210429174235656.png)
   
@@ -205,7 +205,7 @@ typora-copy-images-to: images
 
 
 
-## 환경설정
+## 오라클 설치 전 사전 설정
 
 - **oracle linux로 들어간 후 /etc/hosts 설정**
 
@@ -220,14 +220,14 @@ typora-copy-images-to: images
 - **/etc/hostname 확인**
 
   ```shell
-  vi /etc/
+  vi /etc/hostname 
   ```
 
   ![image-20210429175324380](images/image-20210429175324380.png)
 
 
 
-- **오라클 설치 전 사전 설정**
+- **자동 설정**
 
   ```shell
   yum -y install oracle-database-preinstall-19c
@@ -237,7 +237,111 @@ typora-copy-images-to: images
 
 
 
-- **rpm 설치용 쉘파일 생성**
+- **수동 설정**
+
+  - **/etc/sysctl.conf에 아래 내용 추가**
+
+  ```shell
+  vi /etc/sysctl.conf
+  ```
+
+  ```shell
+  fs.file-max = 6815744
+  kernel.sem = 250 32000 100 128
+  kernel.shmmni = 4096
+  kernel.shmall = 1073741824
+  kernel.shmmax = 4398046511104
+  kernel.panic_on_oops = 1
+  net.core.rmem_default = 262144
+  net.core.rmem_max = 4194304
+  net.core.wmem_default = 262144
+  net.core.wmem_max = 1048576
+  net.ipv4.conf.all.rp_filter = 2
+  net.ipv4.conf.default.rp_filter = 2
+  fs.aio-max-nr = 1048576
+  net.ipv4.ip_local_port_range = 9000 65500
+  ```
+
+  
+
+  - **잘 입력되었는지 확인**
+
+  ```shell
+  /sbin/sysctl -p
+  ```
+
+  ```shell
+  fs.file-max = 6815744
+  kernel.sem = 250 32000 100 128
+  kernel.shmmni = 4096
+  kernel.shmall = 1073741824
+  kernel.shmmax = 4398046511104
+  kernel.panic_on_oops = 1
+  net.core.rmem_default = 262144
+  net.core.rmem_max = 4194304
+  net.core.wmem_default = 262144
+  net.core.wmem_max = 1048576
+  net.ipv4.conf.all.rp_filter = 2
+  net.ipv4.conf.default.rp_filter = 2
+  fs.aio-max-nr = 1048576
+  net.ipv4.ip_local_port_range = 9000 65500
+  ```
+
+  
+
+  - **cf. 커널 파라미터란?!**
+
+    오라클 프로세스에게 RAM 메모리를 할당하기 위해 sysctl.conf 파일에 적혀있는 커널 파라미터를 참조하여 메모리를 할당한다. 
+
+    - shmmax : 공유 메모리 세그먼트의 최대 크기를 정의 
+      - 커널이 응용 프로그램들에게 메모리를 할당해 줄 때 작게 여러 번 할당하지 않고 큰 덩어리(=세그먼트)로 한꺼번에 준다. 이 값이 너무 작으면 DB를 시작 시켰을 때 ORA-27123 : unable to attach to shared moemory segment라는 메시지가 발생할 수 있고 너무 크면 세그먼트의 사용되지 않는 빈 공간을 두기 때문에 메모리 낭비가 발생 
+      - 이 값의 기본값은 32MB입니다. 그러나 오라클이 사용하기엔 양이 부족하므로 2GB로 설정도록 권장
+    - shmmni : 공유 메모리 세그먼트의 최대 개수를 설정
+      - 기본값 4096으로 냅둬도 괜찮음
+    - shmall : 특정 시점에서 시스템에서 사용 가능한 공유 메모리의 최대 크기를 설정
+      - 이 값은 "ceil(shmmax/page_size)"으로 권장
+      - 디폴트 사이즈는 2097152 바이트이다.
+    - shmmin : 단일 공유메모리 세그먼트의 최소 크기
+    - shmseg : 1개의 프로세스에 부여될 수 있는 공유메모리 세그먼트의 최대 개수 
+      - 위에서 살펴본 shmmni는 시스템 전체에서 사용가능한 공유 메모리 세그먼트의 최대 개수이고 이 파라미터는 1개의 프로세스가 사용할 수 있는 공유 메모리 세그먼트의 최대 개수이다.
+
+    
+
+  - **아래 파일 생성 후 내용 추가**
+    - nproc : User당 사용할 수 있는 프로세스 최대 개수
+    - nofile : User당 오픈할 수 있는 파일 개수 (리눅스에서는 모든 개체를 파일로 본다.)
+
+  ```shell
+  vi /etc/security/limits.d/oracle-database-preinstall-19c.conf
+  ```
+
+  ```shell
+  # oracle-database-preinstall-19c setting for nofile soft limit is 1024
+  oracle   soft   nofile    1024
+  # oracle-database-preinstall-19c setting for nofile hard limit is 65536
+  oracle   hard   nofile    65536
+  # oracle-database-preinstall-19c setting for nproc soft limit is 16384
+  # refer orabug15971421 for more info.
+  oracle   soft   nproc    16384
+  # oracle-database-preinstall-19c setting for nproc hard limit is 16384
+  oracle   hard   nproc    16384
+  # oracle-database-preinstall-19c setting for stack soft limit is 10240KB
+  oracle   soft   stack    10240
+  # oracle-database-preinstall-19c setting for stack hard limit is 32768KB
+  oracle   hard   stack    32768
+  # oracle-database-preinstall-19c setting for memlock hard limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90 % of RAM
+  oracle   hard   memlock    134217728
+  # oracle-database-preinstall-19c setting for memlock soft limit is maximum of 128GB on x86_64 or 3GB on x86 OR 90% of RAM
+  oracle   soft   memlock    134217728
+  ```
+
+  
+
+  - **rpm 설치용 쉘파일 생성**
+
+  ```shell
+  vi rpm.sh
+  ```
 
   ```shell
   # vi rpm.sh

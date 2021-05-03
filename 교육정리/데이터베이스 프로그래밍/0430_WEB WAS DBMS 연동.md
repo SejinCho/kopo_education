@@ -415,9 +415,26 @@ typora-copy-images-to: images
 
   
 
-- #### test
+- #### 리눅스에서 test
 
   - localhost/linuxtest/dbconn
 
   ![image-20210503141837220](images/image-20210503141837220.png)
 
+
+
+- #### **윈도우에서 리눅스의 ip주소를 넣어서 test**
+
+  ![image-20210503172736425](images/image-20210503172736425.png)
+
+
+
+- #### cf. 만약에 공유 폴더가 뜨지 않는 경우!!!
+
+  - 공유 폴더가 unmount된 상태이다. 그래서 다시 마운트 시켜줘야 한다.
+
+  ```shell
+  sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other
+  ```
+
+  
