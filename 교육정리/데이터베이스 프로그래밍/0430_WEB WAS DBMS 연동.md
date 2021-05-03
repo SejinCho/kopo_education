@@ -6,7 +6,7 @@ typora-copy-images-to: images
 
 ## WEB/WAS/DBMS 연동
 
-- emp table을 linux_scott 계정으로 가져오기
+- #### **emp table을 linux_scott 계정으로 가져오기(app deploy를 위한 프로젝트에서 emp 테이블을 사용하기 위함**
 
   - emp 오른쪽 버튼 > 익스포트
 
@@ -69,7 +69,7 @@ typora-copy-images-to: images
 
   
 
-- 이클립스 설치
+- ### **tomcat에 올릴 war 생성을 위한 이클립스 설치**
 
   https://www.eclipse.org/downloads/packages/
 
@@ -79,7 +79,7 @@ typora-copy-images-to: images
 
   
 
-- 이클립스에 새로운 프로젝트 생성
+- **이클립스에 새로운 프로젝트 생성**
 
   ![image-20210430174721321](images/image-20210430174721321.png)
 
@@ -380,4 +380,44 @@ typora-copy-images-to: images
   ![image-20210430194636580](images/image-20210430194636580.png)
 
   ![image-20210430193249728](images/image-20210430193249728.png)
+  
+  - war 파일 만들기
+  
+  ![image-20210503115431951](images/image-20210503115431951.png)
+  
+  - export
+  
+  ![image-20210503115550041](images/image-20210503115550041.png)
+
+
+
+- #### **window에 있는 war 파일 리눅스로 옮기기(Apache-Tomcat이 깔려있는 리눅스로)**
+
+  - 폴더 확인
+
+  ![image-20210503122202124](images/image-20210503122202124.png)
+
+
+
+- #### **window에 있는 war 파일 리눅스로 옮기기(Apache-Tomcat이 깔려있는 리눅스로)**
+
+  - 다운로드 폴더 확인
+
+  ![image-20210503122202124](images/image-20210503122202124.png)
+
+  
+
+- #### 톰캣 구동시 띄워지게 되는 웹서비스 인스턴스의 베이스 디렉토로 war 파일 옮기기
+
+  ![image-20210503122528239](images/image-20210503122528239.png)
+
+  ![image-20210503122347500](images/image-20210503122347500.png)
+
+  
+
+- #### test
+
+  - localhost/linuxtest/dbconn
+
+  ![image-20210503141837220](images/image-20210503141837220.png)
 
