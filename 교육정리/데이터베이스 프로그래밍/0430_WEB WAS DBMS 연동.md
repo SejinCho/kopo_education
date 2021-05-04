@@ -449,9 +449,11 @@ typora-copy-images-to: images
 
   ![image-20210504142625239](images/image-20210504142625239.png)
 
-  - 
+  
 
-  - - 띄어쓰기나 문장 간격이 엄청 까다로움!!
+  - /etc/netplan/01-network-manager-all.yaml  설정 변경
+
+    - 띄어쓰기나 문장 간격이 엄청 까다로움!!
 
     ```shell
     gedit /etc/netplan/01-network-manager-all.yaml 
