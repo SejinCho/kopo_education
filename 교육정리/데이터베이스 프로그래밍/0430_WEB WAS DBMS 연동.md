@@ -284,12 +284,13 @@ typora-copy-images-to: images
   }
   ```
   
+
 위에서 Dispatcher가 서블릿에서 특정 URL이나 페이지로 이동하는 경로를 /empList.jsp로 설정했으므로 webapp폴더에 JSP File을 생성해야 한다.
-  
+
 ![image-20210430193208943](images/image-20210430193208943.png)
-  
+
 ![image-20210430194226680](images/image-20210430194226680.png)
-  
+
 ```jsp
   <%@ page language="java" contentType="text/html; charset=UTF-8"
       pageEncoding="UTF-8"%>
@@ -318,8 +319,8 @@ typora-copy-images-to: images
   			
   </body>
   </html>
-  ```
-  
+```
+
 - 라이브러리 넣기
   
   - JSTL : taglib의 사용을 위해 추가
@@ -336,56 +337,60 @@ typora-copy-images-to: images
   
 - 다운 받은 것 lib 폴더에 넣기
   
+
 ![image-20210430184846836](images/image-20210430184846836.png)
-  
+
 - **build path 설정**
   
+
 ![image-20210430184927664](images/image-20210430184927664.png)
-  
+
 ![image-20210430185031023](images/image-20210430185031023.png)
-  
+
 ![image-20210430185105080](images/image-20210430185105080.png)
-  
+
 ![image-20210430185120068](images/image-20210430185120068.png)
-  
+
 ![image-20210430185152157](images/image-20210430185152157.png)
-  
+
 ![image-20210430185235202](images/image-20210430185235202.png)
-  
+
 ![image-20210430185251533](images/image-20210430185251533.png)
-  
+
 ![image-20210430185317318](images/image-20210430185317318.png)
-  
+
 ![image-20210430185330915](images/image-20210430185330915.png)
-  
+
 ![image-20210430185342823](images/image-20210430185342823.png)
-  
+
 ![image-20210430185401268](images/image-20210430185401268.png)
-  
+
 ![image-20210430185458078](images/image-20210430185458078.png)
-  
+
 ![image-20210430185516102](images/image-20210430185516102.png)
-  
+
 ![image-20210430185542494](images/image-20210430185542494.png)
-  
+
 - 실행
   
+
 ![image-20210430194718516](images/image-20210430194718516.png)
-  
+
 - 만약 다음과 같은 에러가 발생한다면 8080이 이미 사용 중이므로 port 번호를 변경해줘야 한다.
   
+
 ![image-20210430194617923](images/image-20210430194617923.png)
-  
+
 ![image-20210430194636580](images/image-20210430194636580.png)
-  
+
 ![image-20210430193249728](images/image-20210430193249728.png)
-  
+
   - **war 파일 만들기**
-  
+
   ![image-20210503115431951](images/image-20210503115431951.png)
-  
+
   - **export**
-  
+
   ![image-20210503115550041](images/image-20210503115550041.png)
 
 
@@ -429,5 +434,70 @@ typora-copy-images-to: images
   ```shell
   sudo mount -t fuse.vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other
   ```
+
+  
+
+- #### ip 변경
+
+  - settings
+
+  ![image-20210504142539924](images/image-20210504142539924.png)
+
+  
+
+  - Network Adapter
+
+  ![image-20210504142625239](images/image-20210504142625239.png)
+
+  - 
+
+  - - 띄어쓰기나 문장 간격이 엄청 까다로움!!
+
+    ```shell
+    gedit /etc/netplan/01-network-manager-all.yaml 
+    ```
+
+    ```shell
+    # Let NetworkManager manage all devices on this system
+    network:
+      version: 2
+      renderer: NetworkManager
+      ethernets:
+        ens33:
+          dhcp6: no
+          addresses: [192.168.119.112/24]
+          gateway4: 192.168.119.2
+          nameservers:
+            addresses: [8.8.8.8, 8.8.4.4]
+    ```
+
+    ![image-20210504142908081](images/image-20210504142908081.png)
+
+  
+
+  - **netplan 적용**
+
+    ```
+    cd /var/lib/tomcat9/webapps/
+    netplan apply
+    ```
+
+    ![image-20210504143339286](images/image-20210504143339286.png)
+
+  
+
+  - **ip 변경 확인**
+
+    ![image-20210504143459276](images/image-20210504143459276.png)
+
+    ![image-20210504143542432](images/image-20210504143542432.png)
+
+    
+
+  - **리눅스와 윈도우에서 war파일 확인**
+
+  ![image-20210504144537566](images/image-20210504144537566.png)
+
+  ![image-20210504144607949](images/image-20210504144607949.png)
 
   
