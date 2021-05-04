@@ -240,7 +240,6 @@ typora-copy-images-to: images
   			String sal= "";
   			String deptno= "";
   			
-  			
   			while (rs.next()) {
   				
   				EMP emp = new EMP();
@@ -284,14 +283,14 @@ typora-copy-images-to: images
   
   }
   ```
-
-  위에서 Dispatcher가 서블릿에서 특정 URL이나 페이지로 이동하는 경로를 /empList.jsp로 설정했으므로 webapp폴더에 JSP File을 생성해야 한다.
-
-  ![image-20210430193208943](images/image-20210430193208943.png)
-
-  ![image-20210430194226680](images/image-20210430194226680.png)
-
-  ```jsp
+  
+위에서 Dispatcher가 서블릿에서 특정 URL이나 페이지로 이동하는 경로를 /empList.jsp로 설정했으므로 webapp폴더에 JSP File을 생성해야 한다.
+  
+![image-20210430193208943](images/image-20210430193208943.png)
+  
+![image-20210430194226680](images/image-20210430194226680.png)
+  
+```jsp
   <%@ page language="java" contentType="text/html; charset=UTF-8"
       pageEncoding="UTF-8"%>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -320,82 +319,76 @@ typora-copy-images-to: images
   </body>
   </html>
   ```
-
-  - 라이브러리 넣기
-
-    - JSTL : taglib의 사용을 위해 추가
-    - https://mvnrepository.com/artifact/javax.servlet/jstl/1.2
-
-    ![image-20210430183227225](images/image-20210430183227225.png)
-
-    - odbc8.jar 다운
-    - https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html
-
-    ![image-20210430183438901](images/image-20210430183438901.png)
-
-    ![image-20210430183531022](images/image-20210430183531022.png)
-
-  - 다운 받은 것 lib 폴더에 넣기
-
-  ![image-20210430184846836](images/image-20210430184846836.png)
-
-  - **build path 설정**
-
-  ![image-20210430184927664](images/image-20210430184927664.png)
-
-  ![image-20210430185031023](images/image-20210430185031023.png)
-
-  ![image-20210430185105080](images/image-20210430185105080.png)
-
-  ![image-20210430185120068](images/image-20210430185120068.png)
-
-  ![image-20210430185152157](images/image-20210430185152157.png)
-
-  ![image-20210430185235202](images/image-20210430185235202.png)
-
-  ![image-20210430185251533](images/image-20210430185251533.png)
-
-  ![image-20210430185317318](images/image-20210430185317318.png)
-
-  ![image-20210430185330915](images/image-20210430185330915.png)
-
-  ![image-20210430185342823](images/image-20210430185342823.png)
-
-  ![image-20210430185401268](images/image-20210430185401268.png)
-
-  ![image-20210430185458078](images/image-20210430185458078.png)
-
-  ![image-20210430185516102](images/image-20210430185516102.png)
-
-  ![image-20210430185542494](images/image-20210430185542494.png)
-
-  - 실행
-
-  ![image-20210430194718516](images/image-20210430194718516.png)
-
-  - 만약 다음과 같은 에러가 발생한다면 8080이 이미 사용 중이므로 port 번호를 변경해줘야 한다.
-
-  ![image-20210430194617923](images/image-20210430194617923.png)
-
-  ![image-20210430194636580](images/image-20210430194636580.png)
-
-  ![image-20210430193249728](images/image-20210430193249728.png)
   
-  - war 파일 만들기
+- 라이브러리 넣기
+  
+  - JSTL : taglib의 사용을 위해 추가
+    - https://mvnrepository.com/artifact/javax.servlet/jstl/1.2
+  
+  ![image-20210430183227225](images/image-20210430183227225.png)
+  
+  - odbc8.jar 다운
+    - https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html
+  
+  ![image-20210430183438901](images/image-20210430183438901.png)
+  
+  ![image-20210430183531022](images/image-20210430183531022.png)
+  
+- 다운 받은 것 lib 폴더에 넣기
+  
+![image-20210430184846836](images/image-20210430184846836.png)
+  
+- **build path 설정**
+  
+![image-20210430184927664](images/image-20210430184927664.png)
+  
+![image-20210430185031023](images/image-20210430185031023.png)
+  
+![image-20210430185105080](images/image-20210430185105080.png)
+  
+![image-20210430185120068](images/image-20210430185120068.png)
+  
+![image-20210430185152157](images/image-20210430185152157.png)
+  
+![image-20210430185235202](images/image-20210430185235202.png)
+  
+![image-20210430185251533](images/image-20210430185251533.png)
+  
+![image-20210430185317318](images/image-20210430185317318.png)
+  
+![image-20210430185330915](images/image-20210430185330915.png)
+  
+![image-20210430185342823](images/image-20210430185342823.png)
+  
+![image-20210430185401268](images/image-20210430185401268.png)
+  
+![image-20210430185458078](images/image-20210430185458078.png)
+  
+![image-20210430185516102](images/image-20210430185516102.png)
+  
+![image-20210430185542494](images/image-20210430185542494.png)
+  
+- 실행
+  
+![image-20210430194718516](images/image-20210430194718516.png)
+  
+- 만약 다음과 같은 에러가 발생한다면 8080이 이미 사용 중이므로 port 번호를 변경해줘야 한다.
+  
+![image-20210430194617923](images/image-20210430194617923.png)
+  
+![image-20210430194636580](images/image-20210430194636580.png)
+  
+![image-20210430193249728](images/image-20210430193249728.png)
+  
+  - **war 파일 만들기**
   
   ![image-20210503115431951](images/image-20210503115431951.png)
   
-  - export
+  - **export**
   
   ![image-20210503115550041](images/image-20210503115550041.png)
 
 
-
-- #### **window에 있는 war 파일 리눅스로 옮기기(Apache-Tomcat이 깔려있는 리눅스로)**
-
-  - 폴더 확인
-
-  ![image-20210503122202124](images/image-20210503122202124.png)
 
 
 
