@@ -437,69 +437,69 @@ typora-copy-images-to: images
 
   
 
-- #### ip 변경
 
-  - settings
+## ip 변경
 
-  ![image-20210504142539924](images/image-20210504142539924.png)
+- settings
 
-  
+![image-20210504142539924](images/image-20210504142539924.png)
 
-  - Network Adapter
 
-  ![image-20210504142625239](images/image-20210504142625239.png)
 
-  
+- Network Adapter
 
-  - /etc/netplan/01-network-manager-all.yaml  설정 변경
+![image-20210504142625239](images/image-20210504142625239.png)
 
-    - 띄어쓰기나 문장 간격이 엄청 까다로움!!
 
-    ```shell
-    gedit /etc/netplan/01-network-manager-all.yaml 
-    ```
 
-    ```shell
-    # Let NetworkManager manage all devices on this system
-    network:
-      version: 2
-      renderer: NetworkManager
-      ethernets:
-        ens33:
-          dhcp6: no
-          addresses: [192.168.119.112/24]
-          gateway4: 192.168.119.2
-          nameservers:
-            addresses: [8.8.8.8, 8.8.4.4]
-    ```
+- /etc/netplan/01-network-manager-all.yaml  설정 변경
 
-    ![image-20210504142908081](images/image-20210504142908081.png)
+  - 띄어쓰기나 문장 간격이 엄청 까다로움!!
 
-  
+  ```shell
+  gedit /etc/netplan/01-network-manager-all.yaml 
+  ```
 
-  - **netplan 적용**
+  ```shell
+  # Let NetworkManager manage all devices on this system
+  network:
+    version: 2
+    renderer: NetworkManager
+    ethernets:
+      ens33:
+        dhcp6: no
+        addresses: [192.168.119.112/24]
+        gateway4: 192.168.119.2
+        nameservers:
+          addresses: [8.8.8.8, 8.8.4.4]
+  ```
 
-    ```
-    cd /var/lib/tomcat9/webapps/
-    netplan apply
-    ```
+  ![image-20210504142908081](images/image-20210504142908081.png)
 
-    ![image-20210504143339286](images/image-20210504143339286.png)
 
-  
 
-  - **ip 변경 확인**
+- **netplan 적용**
 
-    ![image-20210504143459276](images/image-20210504143459276.png)
+  ```
+  cd /var/lib/tomcat9/webapps/
+  netplan apply
+  ```
 
-    ![image-20210504143542432](images/image-20210504143542432.png)
+  ![image-20210504143339286](images/image-20210504143339286.png)
 
-    
 
-  - **리눅스와 윈도우에서 war파일 확인**
 
-  ![image-20210504144537566](images/image-20210504144537566.png)
+- **ip 변경 확인**
 
-  ![image-20210504144607949](images/image-20210504144607949.png)
+  ![image-20210504143459276](images/image-20210504143459276.png)
+
+  ![image-20210504143542432](images/image-20210504143542432.png)
 
   
+
+- **리눅스와 윈도우에서 war파일 확인**
+
+![image-20210504144537566](images/image-20210504144537566.png)
+
+![image-20210504144607949](images/image-20210504144607949.png)
+
