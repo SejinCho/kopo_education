@@ -610,8 +610,9 @@ typora-copy-images-to: images
 
   - **oracle 리눅스에 있는 oracle 계정으로 login**
   
+
 ![image-20210429194434234](images/image-20210429194434234.png)
-  
+
 - **비밀번호 : oracle**
     - export LANG=c : 한글 깨짐 방지
 
@@ -636,7 +637,7 @@ typora-copy-images-to: images
     ```
   $ export CV_ASSUME_DISTID=RHEL7.6
     $ ./runInstaller
-  ```
+    ```
   
   ![image-20210429194920626](images/image-20210429194920626.png)
   
@@ -662,17 +663,18 @@ typora-copy-images-to: images
   
   
 - **Oracle base 경로 설정**
-  
-![image-20210429195143797](images/image-20210429195143797.png)
-  
 
-  
+![image-20210429195143797](images/image-20210429195143797.png)
+
+
+
 - **Inventory 경로 선택**
   
-![image-20210429195206955](images/image-20210429195206955.png)
-  
 
-  
+![image-20210429195206955](images/image-20210429195206955.png)
+
+
+
 - **그룹 권한 선택**
   
   ![image-20210429195233653](images/image-20210429195233653.png)
