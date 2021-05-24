@@ -72,9 +72,9 @@ typora-copy-images-to: images
 - **Process**
 
   - 프로그램(Program)이란? 
-    
+  
 - 어떤 작업을 위해실행할 수 있는 파일
-    
+  
 - 프로세스(Process) ?
   
     - 컴퓨터에서 실행되고 있는 프로그램 
@@ -999,6 +999,8 @@ typora-copy-images-to: images
   - jdbc 드라이버 관리자를 이용해서 오라클이나 mysql 등에 접속한다. 
   - 각각 오라클 jdbc 드라이버, mysql 드라이버가 있는데(jdbc 드라이버는 사용하고자 하는 데이터베이스 벤더 별로 제공 됨) jdbc 드라이버 관리자에 묵시적 형변환이 되어 jdbc를 가질 수 있다.
 
+  ![image-20210524225748662](images/image-20210524225748662.png)
+
   
 
 - **JDBC API**
@@ -1018,6 +1020,7 @@ typora-copy-images-to: images
 
 
 - **JDBC 프로그램 순서** 
+  
   - JDBC 드라이버를 로드한다.
     - Class.forName("oracle.jdbc.driver.OracleDriver")
     - 내가 원하는 class(사용하려는 DB정보가 있는)를 동적으로 jvm이 인식하게 해주는 것이다.
@@ -1027,13 +1030,20 @@ typora-copy-images-to: images
     - JDBC_URL 구성 = jdbc:oracle:thin:@IP주소:포트:SID
     - IP 주소: 오라클이 설치된 컴퓨터의 IP주소 혹은 도메인 이름
     - 포트 : 리스너의 사용 포트 기본값은 1521
-    - SID : 인스턴스 이름으로 (서비스 이름)
+    - SID : 오라클 인스턴스 이름으로 MySQL에서는 DB 이름으로도 불림 (서비스 이름)
   - SQL 쿼리를 실행한다.
     - Statement <- PreparedStatement <- CallableStatement
     - 객체 생성 시 sql 문장을 미리 생성하고 변수 부는 별도의 메서드로 대입하는 방식으로 성능과 관리 면에서 모두 권장되는 방식임
   - 결과를 얻어낸다.
+    
     - ResultSet
+    - ResultSet rs = pstmt.executeQuery( );
+    - ResultSet은 커서 개념의 연결 포인터
+    - 기본적으로 next( )  메서드를 통해 로우 이동
+    
+    ![image-20210524230931020](images/image-20210524230931020.png)
   - 닫는다.
+    
     - close
 
 
