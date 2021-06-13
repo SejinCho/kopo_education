@@ -297,17 +297,309 @@ typora-copy-images-to: images
 
 
 
-- 
+- **exam01**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<!-- css의 style은 무조건 head의 title 밑에 있어야 한다.
+  		그러나 자바스크립트는 아무 곳이든 괜찮다.
+  	 	css 들어온 다음에 javascript(즉, link > style > script 순서로 들어와야 한다.)
+  	 -->
+  	 <script type="text/javascript">
+  	 	document.write('<h2>Hello javascript</h2>'); //document는 웹브라우저의 화면으로 생각하면 된다.
+  	 	
+  	 </script>
+  </head>
+  <body>
+  	<h2>Hello html</h2>
+  	<script type="text/javascript">
+  		document.write("<h2>Hello javascript2</h2>");
+  	</script>
+  </body>
+  </html>
+  ```
+
+  
+
+- **exam02**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	 <script type="text/javascript">
+  	 	//자바스크립트를 이용해서 연산 결과를 보여줄 수 있는 방법
+  	 	//1. document.write();
+  	 	//2. alert();
+  	 	//3. console.log
+  	 	
+  	 	data2 = 'good' //var를 쓰지 않아도 괜찮다.
+  	 	alert(data2)
+  	 	
+  	 	alert(typeof(Number('1234'))) //number
+  	 	alert(typeof(Boolean('true'))) //boolean
+  	 	
+  	 	var num = 45010
+  	 	alert(num + 10) //45020
+  	 	alert(num.toString() + 10) //4502010
+  	 	
+  	 	var num = "ABCD" 
+  	 	alert(num)  //ABCD (위에서 num을 숫자로 정의했지만 다시 문자로 정의 가능)
+  	 	
+  	 	
+  	 	alert(typeof(true)) //boolean
+  	 	alert(typeof(null)) //object
+  	 	alert(typeof(undefined)) //undefiend
+  	 	
+  	 	
+  	 	var data = 12;
+  	 	alert(typeof(data)) //number
+  	 	
+  	 	data = 'hello';
+  	 	alert(typeof(data)) //string
+  	 	
+  	 </script>
+  </head>
+  <body>
+  	
+  </body>
+  </html>
+  ```
+
+  
+
+- exam03
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  
+  	 <script type="text/javascript">
+  	 	document.write('1. <br>')
+  	 	document.write(1 == 1) //true
+  	 	
+  	 	document.write('<br>2. <br>')
+  	 	document.write('1' == "1"); //true
+  	 	
+  	 	document.write('<br>3. <br>')
+  	 	document.write(1 == '1') //true
+  	 	
+  	 	document.write('<br>4. <br>')
+  	 	// ==는 값만 매칭하고 ===는 값과 타입을 모두 매칭
+  	 	document.write(1 === '1') //false
+  	 	
+  	 	document.write('<br>5. <br>')
+  	 	document.write(1 !== '1') //true
+  	 	
+  	 	
+  	 </script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
+
+  
+
+- **exam04**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		true || alert('|| 출력이 되나?') //alert 창 띄어지지 않음
+  		true && alert('&& 출력이 되나???') //alert 창 띄어진다.
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
+
+  
+
+- **exam05**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		var num = prompt('정수를 하나 입력하세요.'); //입력받는 창을 띄어줌
+  		num = Number(num)
+  		
+  		var msg = num + ":" + (num % 2 == 0 ? "짝수" : "홀수")
+  		alert(msg)
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
 
 
 
+- **exam06**
 
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		var a = 10, b = 20, c = 30
+  		alert('100 + 200 = ' + (100 + 200))
+  		alert(`100 + 200 = ${100 + 200}`)
+  		alert(`a : ${a}, b : ${b}, c : ${c}`)
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
 
+  
 
+- **exam07**
 
+  - 호이스팅(hoisting)
+    - 자바스크립트 함수는 실행되기 전에 함수 안에 필요한 변수값들을 모두 모아서 유효 범위의 최상단에 선언한다.
+    - 자바스크립트 Parser가 함수 실행 전 해당 함수를 한 번 훑는다.
+    - 함수 안에 존재하는 변수/함수선언에 대한 정보를 기억하고 있다가 실행시킨다.
+    - 유효 범위: 함수 블록 {} 안에서 유효
 
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		alert(`a : ${a}, b : ${b}`) //undefined, undefined
+  		
+  		alert('hello')
+  		
+  		var a = 10, b = 20 //에러가 나지는 않음 밑의 변수가 위로 올라가는 방식
+  		//대신 위의 alert창은 undefined가 뜬다.(호이스팅)
+  		
+  		alert(`a : ${a}, b : ${b}`) //a : 10, b : 20
+  		{
+  			var a = 30
+  			var c = 50
+  			alert(`a : ${a}, b : ${b}, c: ${c}`) //a : 30, b : 20, c: 50
+  		}
+  		alert(`a : ${a}, b : ${b}, c: ${c}`) //a : 30, b : 20, c: 50
+  		//즉, 스코프의 의미가 사라짐
+  		
+  		
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
 
+  
 
+- **exam08**
 
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		/*
+  		alert(`a : ${a}, b : ${b}`) 
+  		
+  		let a = 10, b = 20 //07에서는 var를 사용했지만 let을 사용
+  		//var는 호이스팅이 되지만 let은 되지 않음 그래서 error가 발생
+  		*/
+  		
+  		let a = 10
+  		let b = 20
+  		
+  		alert(`a : ${a}, b : ${b}`) //a : 10, b : 20
+  		{
+  			let a = 30
+  			let c = 50
+  			alert(`a : ${a}, b : ${b}, c : ${c}`) //a : 30, b : 20
+  		}
+  		alert(`a : ${a}, b : ${b}`) //a : 10, b : 20 여기서 c를 찍으면 error
+  		//즉, 스코프의 의미가 있음(var와 다르다.)
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
 
+  
 
+- **exam08-2**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>Insert title here</title>
+  	<script type="text/javascript">
+  		/*
+  		alert(`a : ${a}, b : ${b}`) 
+  		
+  		let a = 10, b = 20 //07에서는 var를 사용했지만 let을 사용
+  		//var는 호이스팅이 되지만 let은 되지 않음 그래서 error가 발생
+  		*/
+  		
+  		let a = 10
+  		let b = 20
+  		
+  		const data = 'hello'
+  		alert(`data : ${data}`)
+  		
+  		a = 100
+  		data = '안녕하세요'
+  		alert(`data : ${data}`) //오류 발생
+  		//Assignment to constant variable.
+  		//왜냐하면 const는 상수이다. 그래서 한 번 선언하면 변경 불가
+  		
+  		alert(`a : ${a}, b : ${b}`) //a : 10, b : 20
+  		{
+  			let a = 30
+  			let c = 50
+  			alert(`a : ${a}, b : ${b}, c : ${c}`) //a : 30, b : 20
+  		}
+  		alert(`a : ${a}, b : ${b}`) //a : 10, b : 20 여기서 c를 찍으면 error
+  		//즉, 스코프의 의미가 있음(var와 다르다.)
+  	</script>
+  </head>
+  <body>
+  
+  </body>
+  </html>
+  ```
+
+  
