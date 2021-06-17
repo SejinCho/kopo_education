@@ -73,7 +73,7 @@ typora-copy-images-to: images
 
   
 
-- 이벤트 캡쳐(Event Capture)
+- **이벤트 캡쳐(Event Capture)**
 
   - 이벤트 캡쳐는 이벤트 버블링과 반대 방향으로 진행되는 이벤트 전파 방식
 
@@ -120,9 +120,128 @@ typora-copy-images-to: images
 
 
 
+- **text box**
 
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script>
+  	function whenSubmit() {
+  		
+  		let f = document.inputForm
+  		
+  		if(f.id.value == '') {
+  			alert('아이디를 입력하세요')
+  			return false
+  		}
+  		
+  		if(f.pwd.value != f.pwdCheck.value) {
+  			alert('패스워드가 서로 다릅니다')
+  			return false
+  		}
+  			
+  		return true
+  	}
+  </script>
+  </head>
+  <body>
+  	<form action="exam08.html" name="inputForm" onsubmit="return whenSubmit()">
+  		아이디 : <input type="text" name="id" ><br>
+  		패스워드 : <input type="password" name="pwd"><br>
+  		패스워드 확인 : <input type="password" name="pwdCheck" ><br>
+  		<input type="submit" value="전송">
+  	</form>
+  </body>
+  </html>
+  ```
 
--------------------
+  
+
+- **check box**
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script>
+  	function showInfo() {
+  		let f = document.inputForm
+  		let msg = ''
+  		for(let i = 0; i < f.hobby.length; i++) {
+  			if(f.hobby[i].checked) {
+  				msg += f.hobby[i].value + '\n'
+  			}
+  		}
+  		alert(msg)
+  	}
+  	
+  	function selectAll() {
+  		let length = document.inputForm.hobby.length
+  		
+  		for(let i = 0; i < length; i++) {
+  			document.inputForm.hobby[i].checked = true
+  		}
+  	}
+  	
+  	function deSelectAll() {
+  		let length = document.inputForm.hobby.length
+  		
+  		for(let i = 0; i < length; i++) {
+  			document.inputForm.hobby[i].checked = false
+  		}
+  	}
+  	
+  	function toggle(check) {
+  		let length = document.inputForm.hobby.length
+  		
+  		for(let i = 0; i < length; i++) {
+  			document.inputForm.hobby[i].checked = check
+  		}
+  	}
+  	
+  	function toggle() {
+  		let hobby = document.inputForm.hobby
+  		let cnt = hobby.length
+  		
+  		for(let i = 0; i < hobby.length && hobby[i].checked; i++) {
+  			cnt --
+  		}
+  		
+  		for(let i = 0; i < hobby.length; i++){
+  			hobby[i].checked = Boolean(cnt)
+  		}
+  	}
+  	
+  </script>
+  </head>
+  <body>
+  	<form name="inputForm">
+  		당신의 취미는?<br>
+  		<input type="checkbox" name="hobby" value="music">음악감상<br>
+  		<input type="checkbox" name="hobby" value="movie">영화감상<br>
+  		<input type="checkbox" name="hobby" value="reading">독서<br>
+  		<input type="checkbox" name="hobby" value="game">게임<br>
+  		<!-- <input type="button" value="전체선택" onclick="selectAll()">
+  		<input type="button" value="전체해제" onclick="deSelectAll()"> -->
+  		
+  		<!-- <input type="button" value="전체선택" onclick="toggle(true)">
+  		<input type="button" value="전체해제" onclick="toggle(false)">-->
+  		
+  		<input type="button" value="전체선택/해제" onclick="toggle()">
+  		
+  		<input type="button" value="결과보기" onclick="showInfo()">
+  	</form>
+  </body>
+  </html>
+  
+  ```
+
+  
 
 - **select box**
 
@@ -319,7 +438,7 @@ typora-copy-images-to: images
 
   
 
-- jqueryui
+- **jqueryui**
 
   - https://jqueryui.com/
   - ui를 사용하기 위하여 스크립트 추가
@@ -328,4 +447,85 @@ typora-copy-images-to: images
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   ```
 
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		alert('!!!')
+  		//$('ul li').hide()
+  		//$('ul li:first').hide() //호랑이만 들어간다.
+  		//ul li이면 전체의 ul들이 모두 모여서 하나의 배열로 들어간다.
+  		//그래서 호랑이만 지워지는 것임
+  		
+  		//$('ul li:first-child').hide() //그룹별로 첫 번째 데이터
+  		//$('ul li:last-child').hide() //그룹별로 마지막 데이터
+  		
+  		//속성
+  		//속성은 []로 접근
+  		//target 속성을 가지고 있는 것 숨기기
+  		//$('a[target]').hide()
+  		//$('a[href="http://www.naver.com"]').hide()
+  		
+  		//버튼
+  		//input tag 중에서 타입이 button인 애 지우기
+  		//$('input[type="button"]').hide()
+  		//$('input:button').hide() //위와 같은 의미
+  		
+  		//$(':button').hide() //타입이 버튼인 애들 지우기
+  		//버튼 1과 버튼 2가 모두 지워진다.
+  		
+  		//$('button').hide() //버튼 2가 지워진다.
+  		
+  		//click 이벤트
+  		//어떤 버튼이든 클릭했다면
+  		$(':button').click(function(){
+  			//$('h2').hide()
+  			//this는 클릭을 당한 대상
+  			console.log($(this)) //jquery -> S.fn.init [input]
+  			//console.log(this) //javascript -> <button>버튼2</button>
+  			//$(this).hide()
+  			$(this).hide('Explode')
+  		}) 
+  	})	
+  	
+  </script>
   
+  </head>
+  <body>
+  	<h2>button 전</h2>
+  	<input type="button" value="버튼1">
+  	<button>버튼2</button>
+  	<h2>button 후</h2>
+  	
+  	<h2>a Tag 전</h2>
+  	<a href="http://www.naver.com">네이버</a>
+  	<a href="http://wwww.daum.com" target="_blank">다음</a>
+  	<h2>a Tag 후</h2>
+  	
+  	<h1>동물종류</h1>
+  	<ul>
+  		<li>호랑이</li>
+  		<li>늑대</li>
+  		<li>코끼리</li>
+  		<li>여우</li>
+  	</ul>
+  	
+  	<h1>음식종류</h1>
+  	<ul>
+  		<li>김밥</li>
+  		<li>햄버거</li>
+  		<li>부대찌개</li>
+  		<li>초밥</li>
+  	</ul>
+  </body>
+  </html>
+  ```
+  
+  
+
