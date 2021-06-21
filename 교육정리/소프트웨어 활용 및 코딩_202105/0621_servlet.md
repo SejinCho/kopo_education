@@ -455,3 +455,11 @@ typora-copy-images-to: images
   ```
 
   
+
+- 시퀀스에서 캐시를 가지고 있어서 순서를 건너뛸 때
+
+  ```sql
+  alter sequence seq_t_board_no NOCACHE;
+  ```
+
+  
