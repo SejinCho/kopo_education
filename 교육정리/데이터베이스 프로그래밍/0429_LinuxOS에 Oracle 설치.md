@@ -630,11 +630,11 @@ typora-copy-images-to: images
   
   ![image-20210429194715857](images/image-20210429194715857.png)
   
-- **에러 조치 방법**
+- **에러  조치 방법**
   
   - **CV_ASSUME_DISTID 값을 설정**
   
-    ```
+    ```shell
   $ export CV_ASSUME_DISTID=RHEL7.6
     $ ./runInstaller
     ```
