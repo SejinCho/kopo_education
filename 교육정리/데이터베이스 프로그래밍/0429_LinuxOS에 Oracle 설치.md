@@ -630,6 +630,8 @@ typora-copy-images-to: images
   
   ![image-20210429194715857](images/image-20210429194715857.png)
   
+  
+  
 - **에러  조치 방법**
   
   - **CV_ASSUME_DISTID 값을 설정**
@@ -641,7 +643,9 @@ typora-copy-images-to: images
   
   ![image-20210429194920626](images/image-20210429194920626.png)
   
-  - 에러 원인 : **OS 호환성 문제**
+  
+  
+- 에러 원인 : **OS 호환성 문제**
       - **oracle 19c docs 를 보니 oracle linux 8은 아직 지원하지 않는다고 나옴**
 
   - **Set Up Software Only 선택**
@@ -659,7 +663,7 @@ typora-copy-images-to: images
   - **Enterprise Edition 선택**
 
   ![image-20210429195122104](images/image-20210429195122104.png)
-
+  
   
   
 - **Oracle base 경로 설정**
