@@ -468,7 +468,7 @@ typora-copy-images-to: images
 
 
 
-- 커서 속성
+- **커서 속성**
 
   - 커서 속성자는 명시적/암시적이 동일하지만 의미상 약간의 차이가 나타난다. 각 의미의 차이를 기억
 
@@ -508,5 +508,16 @@ typora-copy-images-to: images
   - 커서 정의시 Join 연산이 가능할까? ㅇㅋ 가능
 
   ![image-20210702171337938](images/image-20210702171337938.png)
+
+  - 커서 FOR LOOP 실습
+    - 명시적인 커서인 경우 rowcount를 쓰면 총 누적된 커서의 개수가 나오고
+    - 암시적인 커서인 가장 최근의 실행한 sql에 의해서 영향받은 row가 나오는 것임
+    - 아래의 코드에서 주석을 풀면 오류가 나는 이유는 커서는 loop를 돌면 끝나서 rowcount에서 error 발생
+
+  ![image-20210705090822214](images/image-20210705090822214.png)
+
+  - 커서 FOR LOOP 실습
+
+  ![image-20210705091042076](images/image-20210705091042076.png)
 
   
