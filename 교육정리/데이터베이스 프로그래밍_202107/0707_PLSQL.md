@@ -6,10 +6,56 @@ typora-copy-images-to: images
 
 ## PL/SQL Advanced Feature 
 
-- Dynamic SQL
-- Static SQL 
+- select * from 회원
+  - where id = 'xman' and password = 'yman'
+    - sql이 새로 만들어지는 것 (상수 사용하여 코딩)
+    - 정적 sql
+    - sql injection에 동적 sql보다 안전하다.
+  - where id =: v_zd and password =: v_pwd
+    - :v_zd, :v_pwd (bind변수)
+    - sql이 새로 작성되지 않고 id와 password 만 들어가는 것임
+    - 동적 sql
 
 
 
+- Dynamic SQL 
 
+  - 실행시점(Run Time)에 실행 프로그램내에서 생성되는 SQL 또는 PL/SQL을 동적 SQL(Dynamic SQL) 
 
+  - 실습
+
+  ```sql
+  begin 
+      create table by_dynamic(x date); 
+  end;
+  /
+  
+  --pl/sql block 내에서 ddl을 직접 사용할 수 없다. 실행시 error 발생
+  --그래서 v_sql 변수에 sql문장을 저장한 후 변수를 execute immediate 사용
+  -- dy_dynamic 테이블이 없는 경우 execute immediate 실행 시 exception 발생
+  -- exception immediate에 직접 sql문 사용 
+  -- desc 명령어를 통해 생성된 테이블 구조 확인 
+  
+  declare
+      v_sql varchar2(2000);
+  begin
+      --pl/sql block 내에서 ddl, dcl 등의 계열은 동적으로만 가능
+      begin
+          v_sql := 'drop table by_dynamic';
+          execute immediate v_sql;
+      exception
+          when others then
+              dbms_output.put_line('dynamic sql drop =>' || substr(sqlerrm,1,50));
+          end;
+          begin
+              execute immediate 'create table by_dynamic(x date)'; --직접 sql 문장 사용
+          exception
+              when others then
+                  dbms_output.put_line('dynamic sql create =>' || substr(sqlerrm,1,50));
+          end;
+  end;
+  /
+  desc by_dynamic;
+  ```
+
+  
