@@ -144,6 +144,10 @@ typora-copy-images-to: images
 
 
 
+
+
+## spring DI
+
 - **spring DI(Dependency Injection)**
 
   - `DI`란 **스프링이 다른 프레임워크와 차별화되어 제공하는 의존 관계 주입 기능**으로,
