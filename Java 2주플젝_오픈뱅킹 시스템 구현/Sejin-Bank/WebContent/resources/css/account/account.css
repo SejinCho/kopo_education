@@ -1,0 +1,11 @@
+/*이체 input box*/
+.input-text-box {
+	width: 60%;
+	border-width : 1px 1px;
+	border-color: #D3D3D3;
+}
+
+.account_password_check {
+	color : red;
+	margin-left: 15px;	
+}

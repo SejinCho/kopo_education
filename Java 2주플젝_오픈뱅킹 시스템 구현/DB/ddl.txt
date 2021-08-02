@@ -1,0 +1,200 @@
+
+/* Drop Tables */
+
+DROP TABLE sj_account_info CASCADE CONSTRAINTS;
+DROP TABLE sj_account_transfer_info CASCADE CONSTRAINTS;
+DROP TABLE sj_bank_code CASCADE CONSTRAINTS;
+DROP TABLE sj_member CASCADE CONSTRAINTS;
+DROP TABLE sj_qna_board CASCADE CONSTRAINTS;
+DROP TABLE sj_condition_transfer CASCADE CONSTRAINTS;
+
+/*Drop Sequence*/
+drop sequence sj_seq_member_id ;
+drop sequence sj_seq_account_info_id ;
+drop sequence sj_seq_qna_board_id ;
+drop sequence sj_seq_account_transfer_info_id;
+drop sequence sj_seq_qna_board_file_id ;
+drop sequence sj_seq_transfer_exception_log;
+drop sequence sj_seq_condition_transfer; 
+
+/*Create Sequence*/ 
+create sequence sj_seq_member_id ;
+create sequence sj_seq_account_info_id ;
+create sequence sj_seq_qna_board_id ; --qna 보드
+create sequence sj_seq_transfer_info_id; --거래내역(세진은행 기준)
+create sequence sj_seq_qna_board_file_id ; --qna 보드 파일
+create sequence sj_seq_transfer_exception_log; --이체 예외
+create sequence sj_seq_condition_transfer; 
+
+/* Create Tables */
+
+CREATE TABLE sj_transfer_exception_log
+(
+	id varchar2(30) NOT NULL,
+	log_date char(10) DEFAULT to_char(sysdate,'yyyy-mm-dd'),
+	log_time char(8) DEFAULT to_char(sysdate,'hh24:mi:ss'), --to_char(sysdate + 195/(24*60*60),'hh24:mi:ss') 서버와 시간 차이남
+	program_name varchar2(100),
+	error_message varchar2(250),
+	description varchar2(1000),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE sj_account_info
+(
+	id varchar2(30) NOT NULL,
+	member_id varchar2(30) NOT NULL,
+	account_number varchar2(100) NOT NULL,
+	account_password char(4) NOT NULL,
+	balance number(30) DEFAULT 0,
+	nickname varchar2(50),
+	-- 1. 입출금
+	-- ISA
+	-- 대출
+	-- 펀드
+	-- 외환
+	-- 퇴직연금
+	-- 휴면예금
+	account_type number(1) DEFAULT 1,
+	-- 3.거래중지/ 2.휴면계좌 / 1.정상
+	account_status number(1),
+	reg_date date default sysdate,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sj_account_transfer_info
+(
+	id varchar2(30) NOT NULL,
+	account_number varchar2(20),
+	bank_code char(1),
+	-- 거래금액
+	tran_amt number(10,0),
+	-- 내용
+	content varchar2(500),
+	inout_type char(1),
+	-- 거래 날짜
+	tran_date char(10) default to_char(sysdate, 'yyyy-mm-dd'), 
+	-- 거래시간
+	tran_time char(8) default to_char(sysdate, 'hh24:mi:ss') , --to_char(sysdate + 198/(24*60*60),'hh24:mi:ss') 서버와 차이나서 쩔수
+	PRIMARY KEY (id)
+);
+
+
+
+CREATE TABLE sj_bank_code 
+(
+	bank_name varchar2(20),
+	bank_code char(1), --종범 : J, 세진: S, 현석: Y, 소영: D
+	PRIMARY KEY (bank_code)
+);
+
+CREATE TABLE sj_member
+(
+	id varchar2(30) NOT NULL,
+	user_id varchar2(20),
+	name varchar2(30) ,
+	user_password varchar2(30),
+	-- 간편비밀번호
+	easy_password char(6),
+	email varchar2(100),
+	kakao_id varchar2(30),
+	phone char(11),
+	jumin_no char(13),
+	-- 여자 f, 남자 m
+	gender char(1),
+	-- 생년월일
+	birth char(10),
+	zipcode char(7),
+	-- 도로명주소
+	addr1_load varchar2(200),
+	-- 지번주소
+	addr1_jibun varchar2(200),
+	addr2 varchar2(200),
+	receive_sms_yn char(1),
+	-- 개인정보이용동의
+	privacy_agree_yn char(1) default 'N',
+	privacy_agree_date date,
+	reg_date date DEFAULT sysdate,
+	-- 회원탈퇴 날짜
+	withdrawal_date date,
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sj_qna_board
+(
+	id varchar2(30) NOT NULL,
+	-- member pk
+	member_id varchar2(30) NOT NULL,
+	title varchar2(100),
+	content varchar2(1000),
+	view_cnt number(5,0) default 0,
+	reg_date date DEFAULT sysdate NOT NULL,
+	reference number(10,0), -- 그룹화 아이디
+	re_step number(10,0), --글 순서
+	re_level number(10,0), -- 글레벨
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sj_qna_board_file
+(
+	id varchar2(40) NOT NULL,
+	qna_board_id varchar2(40),
+	file_chan_name varchar2(1000),
+	file_path varchar2(1000),
+	orgn_file_name varchar2(1000),
+	file_size number(10,0),
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE sj_condition_transfer
+(
+	id varchar2(30) NOT NULL,
+	member_id varchar2(30),
+	type char(1), -- 예약이체:R, 자동이체:A
+	condition_tran_date char(10),
+	condition_tran_time char(5),
+	name varchar2(10),
+	send_account_number varchar2(20),
+	receive_account_number varchar2(20),
+	send_bank_code char(1),
+	receive_bank_code char(1),
+	tran_amt number(10,0),
+	my_content varchar2(500),
+	receive_content varchar2(500),
+	tran_state char(1), --거래 상태(완료(S), 예약(R))
+	reg_date date default sysdate,
+	PRIMARY KEY (id)
+);
+
+
+
+
+/* Comments */
+
+COMMENT ON COLUMN sj_account_info.account_type IS '예금/신탁
+ISA
+대출
+펀드
+외환
+퇴직연금
+휴면예금';
+COMMENT ON COLUMN sj_account_info.account_status IS '거래중지/ 휴면계좌 / 정상';
+COMMENT ON COLUMN sj_account_transfer_info.account_info_id IS 'account info pk';
+COMMENT ON COLUMN sj_account_transfer_info.inout_type IS '입금 I 출금 O ';
+COMMENT ON COLUMN sj_account_transfer_info.tran_amt IS '거래금액';
+COMMENT ON COLUMN sj_account_transfer_info.tran_data IS '거래 날짜';
+COMMENT ON COLUMN sj_account_transfer_info.tran_time IS '거래시간';
+COMMENT ON COLUMN sj_member.gender IS '여자 f, 남자 m';
+COMMENT ON COLUMN sj_member.birth IS '생년월일';
+COMMENT ON COLUMN sj_member.privacy_agree_yn IS '개인정보이용동의';
+COMMENT ON COLUMN sj_member.withdrawal_date IS '회원탈퇴 날짜';
+COMMENT ON COLUMN sj_qna_board.member_id IS 'member pk';
+COMMENT ON COLUMN sj_qna_board.reference IS '그룹화 아이디';
+COMMENT ON COLUMN sj_qna_board.re_step IS '글순서';
+COMMENT ON COLUMN sj_qna_board.re_level IS '글레벨';
+
+
+

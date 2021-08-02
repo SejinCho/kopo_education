@@ -6,7 +6,33 @@ typora-copy-images-to: images
 
 # Spring MVC
 
+- **Front Controller 패턴 적용**
+  - FrontController 패턴을 적용하면 하나의 Servlet에서 모든 요청을 받아들여 적절한 Controller로 요청을 위임해준다. 
+  - 한곳에서 모든 사용자의 요청을 컨트롤할 수 있는것에 대한 장점은 기본적으로 사용자의 모든 요청에 대해 `인코딩처리`, `에러 페이지 처리`, `공지` 등에 대한 처리를 한곳에서 할 수 있다.
 
+![image-20210802225848940](images/image-20210802225848940.png)
+
+
+
+- **Dispatcher Servlet**
+
+  - Spring에서는 위와 같은 Front Controller 패턴을 취하는 Servlet을 미리 만들어 두었다.
+
+  - 그것이 바로 Dispatcher Servlet이다. 즉, 모든 **요청을 한곳에서 받아서 필요한 처리**들을 한 뒤, **요청에 맞는 handler로 요청을 Dispatch**하고, 해당 **Handler의 실행 결과를 Http Response형태로 만드는 역할**을 한다.
+
+  - 구조
+
+    ![image-20210802230751850](images/image-20210802230751850.png)
+
+    - `DispatcherServlet`은 앞선 포스팅에서 살펴본 `ContextLoaderListener`에 의해 `ServletContext`에 등록된 `ApplicationContext`를 상속받아 `WebApplicationContext`를 생성합니다. 위 그림의 `Root WebApplicationContext`가 ContextLoaderListener에 의해 등록된 ApplicationContext이며 `Servlet WebApplicationContext`가 그것을 상속받아 `DispatcherServlet`에서 자동으로 만든 ApplicationContext입니다.
+    - 요약을 하자면 **Root WebApplicationContext**는`ContextLoaderListener`에 의해 `ServletContext`에 등록되는 ApplicationContext로 모든 Servlet이 사용가능하다.
+    - **Servlet WebApplicationContext**는`DispatcherServlet`에서 `Root WebApplicationContext`를 상속받아 만든 ApplicationContext 으로 해당 `DispathcerServlet` 안에서만 사용이 가능하다.
+
+  - 구조의 이유
+
+    - 위의 그림을 자세히 보시면 Root WebApplicationContext에는 모든 Servlet에서 공용으로 사용가능하게 보이는 `Services, Repositories` Bean이 등록되어 있는것을 볼 수 있습니다. 때문에, `DispatcherServlet`이 여러개가 필요한 Application이 있을 수도 있기 때문에, `Root WebApplicationContext`을 `DispatcherServlet`에서 다시 상속을 받아 필요한 기능을 추가하여 사용하도록 구조를 만들어 두었다고 한다.
+
+  
 
 ### 프로젝트 생성 
 
@@ -16,13 +42,13 @@ typora-copy-images-to: images
 
  
 
-- Create a simple project 체크 후 Next 클릭
+- **Create a simple project 체크 후 Next 클릭**
 
   ![image-20210802094750577](images/image-20210802094750577.png) 
 
  
 
-- 입력창에 다음과 같이 입력 후 Finish 클릭
+- **입력창에 다음과 같이 입력 후 Finish 클릭**
 
   - war는 웹을 구성
 
@@ -30,7 +56,7 @@ typora-copy-images-to: images
 
 
 
-- pom.xml
+- **pom.xml**
 
   - dependency 추가
 
@@ -73,11 +99,11 @@ typora-copy-images-to: images
 
 
 
-- 스프링 설정 파일 작성
+- **스프링 설정 파일 작성**
 
   - src main resources 하위에 config spring 폴더 작성
 
-  - <context:component-scan base-package="kr.co.mlec" /> : controller, component, service를 인식
+  - <context:component-scan base-package="kr.co.mlec" /> : 특정 패키지 내의 클래스를 스캔하고 Annotation(`@controller`, `@component`, `@service`, `@repository`)을 확인한 후 Bean 인스턴스로 생성한다.
 
   - < mvc:view-resolvers > : view와 관련된 내용이 들어오면 설정
 
@@ -111,7 +137,13 @@ typora-copy-images-to: images
 
 
 
-- 기본 디렉토리 생성
+- **DispatcherServlet의 ViewResolver**
+  - ViewResolver는 사용자가 요청한 것에 대한 응답 view를 렌더링하는 역할
+  - view 이름으로부터 사용될 view 객체를 맵핑하는 역할
+
+
+
+- **기본 디렉토리 생성**
 
   - / spring mvc / src / main / webapp 에 WEB INF 폴더 생성한 후 web.xml
   - <servlet-name>dispatcher</servlet-name> : 대표 서블릿을 이미 스프링이 제공하고 있음
@@ -720,6 +752,12 @@ public Map<String, String> resJsonBody() {
 
 
 
+- **message-converters**
+  - 메세지 컨버터는 XML이나 JSON을 이용한 AJAX 기능이나 웹 서비스를 개발할 때 사용할 수 있다.
+  - HTTP 요청 프로퍼티를 모델 오브젝트의 프로퍼티에 개별적으로 바인딩하고 모델 오브젝트를 다시 뷰를 이용해 클라이언트로 보낼 콘텐츠를 만드는 대신, **HTTP 요청 메세지 본문과 HTTP 응답 메세지 본문을 통째로 메세지로 다루는 방식이다.** 메세지 컨버터는 파라미터의 `@RequestBody`와 메소드에 부여한 `@ResponseBody`를 이용한다.
+
+
+
 - **그리고 map에 있는 데이터를 알아서 json으로 바꿔주는 라이브러리를 추가**
 
 ![image-20210802145814096](images/image-20210802145814096.png)
@@ -753,7 +791,7 @@ public Map<String, String> resJsonBody() {
 
 
 
-- JSON 응답처리(vo)
+- **JSON 응답처리(vo)**
   - ResBodyController 코드 추가
 
 ```java
