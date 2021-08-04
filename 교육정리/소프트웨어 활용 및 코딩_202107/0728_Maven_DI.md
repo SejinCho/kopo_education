@@ -190,7 +190,7 @@ typora-copy-images-to: images
 
 
 
-- Container
+- **Container**
 
   - Spring Container
 
@@ -215,7 +215,7 @@ typora-copy-images-to: images
 
 
 
-- Container - XML
+- **Container - XML**
   - Spring XML 파일
     - SPRING은 XML 설정정보를 참조하여 여러가지 Container Service를 제공
     - 유지보수 작업 시 xml 파일을 조정
@@ -397,7 +397,7 @@ typora-copy-images-to: images
 
   - DriverMain.java
 
-  ```
+  ```java
   package di.basic;
   
   public class DriverMain {
@@ -424,7 +424,7 @@ typora-copy-images-to: images
 
   - HankookTire.java
 
-  ```
+  ```java
   package di.basic;
   
   public class HankookTire implements Tire {
@@ -441,7 +441,7 @@ typora-copy-images-to: images
 
   - KumhoTire.java
 
-  ```
+  ```java
   package di.basic;
   
   public class KumhoTire implements Tire {
@@ -456,7 +456,7 @@ typora-copy-images-to: images
 
   
 
-- 타이어가 설치되어 있지 않은 자동차만 만드는 경우
+- **타이어가 설치되어 있지 않은 자동차만 만드는 경우**
 
   - DriverMain.java
 
@@ -557,16 +557,17 @@ typora-copy-images-to: images
   	<bean class="di.xml01.HankookTire" id="hankook"/>        
   	<bean class="di.xml01.KumhoTire" id="kumho"/>        
   	
-  	<bean class="di.xml01.Car" id="car2">
+  	<bean class="di.xml01.Car" id="car2"> 
+          <!-- name : class에서 사용할 setter이름  -->
   		<property name="tire" ref="kumho"></property>
   	</bean>          
   </beans>
-  ```
-
+```
   
 
-  - DriverMain.java
-
+  
+- DriverMain.java
+  
   ```java
   package di.xml01;
   
@@ -599,10 +600,10 @@ typora-copy-images-to: images
   	}
   
   }
-  ```
-
-  - Car.java
-
+```
+  
+- Car.java
+  
   ```java
   package di.xml01;
   
@@ -620,6 +621,6 @@ typora-copy-images-to: images
   	}
   }
   
-  ```
-
+```
+  
   
