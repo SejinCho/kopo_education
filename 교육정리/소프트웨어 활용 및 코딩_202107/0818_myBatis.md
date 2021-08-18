@@ -522,3 +522,145 @@ public class MybatisMain {
 </mapper>
 ```
 
+
+
+- myBatis doc
+
+  https://mybatis.org/mybatis-3/ko/getting-started.html
+
+  
+
+-----------
+
+
+
+## resultMap
+
+- 컬럼 이름과 VO의 변수명을 자동으로 매핑
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.ac.kopo.board.BoardDAO">
+	<insert id="newBoard" parameterType="board">
+		insert into t_board(no,title,writer,content) 
+		values(#{no},#{title},#{writer},#{content})
+	</insert>
+	
+	<resultMap type="board" id="boardMap">
+		<result column="view_cnt" property="viewCnt"/>
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	
+	<select id="selectBoardListMap" resultMap="boardMap">
+		select no, title, writer, content, view_cnt, to_char(reg_date,'yyyy-mm-dd') as reg_date from t_board
+	</select>
+	<select id="selectBoardList" resultType="board">
+		select * from t_board
+	</select>
+</mapper>
+```
+
+
+
+-----------
+
+
+
+## include
+
+- 공통 쿼리 묶기
+- xml
+
+```xml
+<sql id="selectBoard2" >
+    select no, title, writer, content, view_cnt, to_char(reg_date,'yyyy-mm-dd') as reg_date from t_board
+</sql>
+<select id="selectBoard3">
+    <include refid="selectBoard2"/>
+    where no = #{no}
+</select>
+```
+
+
+
+
+
+---------
+
+
+
+## 동적 태그
+
+![image-20210818145324804](images/image-20210818145324804.png)
+
+
+
+- **상황에 따라서 and와 ,가 알아서 생략이 된다.**
+
+![image-20210818150316012](images/image-20210818150316012.png)
+
+
+
+----------
+
+## foreach
+
+- 공통 배열 데이터
+
+```java
+String[] userArray = {"1", "2", "3"}
+```
+
+
+
+#### 배열 파라미터를 Map을 통해 넘겼을 경우
+
+- parameterType="hashmap"
+
+- **collection을 꼭! 넘겨주는 배열 변수 값과 동일하게 작성해야 한다.**
+
+![image-20210818155403941](images/image-20210818155403941.png)
+
+
+
+#### 배열 파라미터를 직접 넘겼을 경우
+
+- **※ 주의 : collection을 꼭! "array"로 작성해야 한다.**
+
+![image-20210818155455153](images/image-20210818155455153.png)
+
+
+
+#### 리스트 Map을 통해 넘겼을 경우
+
+- **리스트 안에 뽑고 싶은 결괏값을 {key.value} 형태로 뽑으면 된다.**
+- **※ 주의 : collection을 꼭! 넘겨주는 리스트 변수 값과 동일하게 작성해야 한다.**
+
+![image-20210818160032085](images/image-20210818160032085.png)
+
+
+
+#### 리스트 파라미터를 직접 넘겼을 경우
+
+- parameterType="java.util.List"
+
+- **리스트 안에 뽑고 싶은 결괏값을 {key.value} 형태로 뽑으면 된다.**
+- **※ 주의 : collection을 꼭! "list"로 작성해야 한다.**
+
+![image-20210818160534999](images/image-20210818160534999.png)
+
+
+
+--------
+
+## where
+
+- where 태그를 사용하면 title이 없는 경우에 and를 알아서 지워준다.
+
+![image-20210818162300902](images/image-20210818162300902.png)
+
+
+
